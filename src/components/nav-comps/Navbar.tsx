@@ -1,57 +1,45 @@
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
+import {NavigationMenu, NavigationMenuItem, NavigationMenuList,} from "@/components/ui/navigation-menu";
 
 import React from "react";
-import {ShoppingCart, Heart} from "lucide-react";
+import {Heart, ShoppingCart} from "lucide-react";
 import Link from "next/link";
 
 export default function Navbar() {
     return (
         <div className={`flex justify-between items-center py-5 px-10`}>
 
-            <Link href="/" className={`text-2xl font-bold`}>Ecommerce</Link>
-            <NavigationMenu>
-                <NavigationMenuList className={`flex gap-6`}>
+            <NavigationMenu className={`text-md p-5 flex justify-between max-w-7xl items-center mx-auto`}>
+                <NavigationMenuList className={`text-4xl font-semibold tracking-tighter`}>
                     <NavigationMenuItem>
-                        <NavigationMenuLink asChild>
-                            <Link href="/home" className="font-semibold">Home</Link>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuLink asChild>
-                            <Link href="/products" className="font-semibold">Products</Link>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuLink asChild>
-                            <Link href="/cart" className="font-semibold">Cart</Link>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuLink asChild>
-                            <Link href="/categories" className="font-semibold">Categories</Link>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuLink asChild>
-                            <Link href="/brands" className="font-semibold">Brands</Link>
-                        </NavigationMenuLink>
+                        <Link href={`/`}>SnapCart</Link>
                     </NavigationMenuItem>
                 </NavigationMenuList>
+                <NavigationMenuList className={`font-bold gap-5`}>
+                    <NavigationMenuItem>
+                        <Link href="/" className="font-semibold">Home</Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <Link href="/products" className="font-semibold">Products</Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <Link href="/cart" className="font-semibold">Cart</Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <Link href="/categories" className="font-semibold">Categories</Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <Link href="/brands" className="font-semibold">Brands</Link>
+                    </NavigationMenuItem>
+                </NavigationMenuList>
+                <NavigationMenuList className={`font-bold gap-2`}>
+                    <button>
+                        <ShoppingCart/>
+                    </button>
+                    <button>
+                        <Heart/>
+                    </button>
+                </NavigationMenuList>
             </NavigationMenu>
-
-            <div className={`flex item gap-6`}>
-                <ShoppingCart size={24}/>
-                <Heart size={24}/>
-            </div>
         </div>
     )
 }
