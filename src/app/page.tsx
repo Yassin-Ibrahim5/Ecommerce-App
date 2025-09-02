@@ -1,10 +1,23 @@
 import MainSlider from "@/components/sliders-comps/MainSlider";
+import {getCategories} from "@/actions/categories.action";
+import CatSliderComp from "@/components/sliders-comps/CatSliderComp";
+import React from "react";
+import {getProducts} from "@/actions/products.action";
+import ProductsGridSystem from "@/components/products-comps/ProductsGridSystem";
 
-export default function Home() {
+export default async function Home() {
+    const response = await getCategories();
+    const categories = Array.isArray(response?.data?.data) ? response.data.data : [];
+
+    const {data: products} = await getProducts();
     return (
         <>
             <MainSlider/>
-            <h2 className={`text-3xl text-center `}>Hello from Home Page</h2>
+            <div className={`my-5`}>
+                <CatSliderComp category={categories}/>
+            </div>
+            <h2 className="text-3xl text-center">Products</h2>
+            <ProductsGridSystem products={products}/>
         </>
     );
 }

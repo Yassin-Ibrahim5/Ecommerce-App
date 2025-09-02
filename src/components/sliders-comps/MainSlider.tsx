@@ -24,7 +24,7 @@ export default function MainSlider() {
                 className="mySwiper">
                 <SwiperSlide>
                     <div className={`relative h-[600px] w-full`}>
-                        <Image src={"/slider-imgs/slider-01.jpg"} alt={`slider-images`} fill
+                        <Image src="/slider-imgs/slider-01.jpg" alt={`slider-images`} fill
                                sizes="(max-width:768px) 100vw (max-width:1280px) 50vw, 25" priority loading={"eager"} className={`object-cover`}/>
                         <div className="absolute top-[200px] left-[70px]">
                             <h2 className={`text-md font-bold my-5`}>Summer Collection</h2>
