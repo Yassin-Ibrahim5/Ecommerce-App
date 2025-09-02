@@ -16,7 +16,6 @@ export default async function Home() {
             <div className={`my-5`}>
                 <CatSliderComp category={categories}/>
             </div>
-            <h2 className="text-3xl text-center">Products</h2>
             <ProductsGridSystem products={products}/>
         </>
     );
