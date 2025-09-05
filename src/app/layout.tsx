@@ -3,6 +3,7 @@ import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/nav-comps/Navbar";
 import React from "react";
+import {AuthProvider} from "@/app/context/AuthProvider";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -30,8 +31,10 @@ export default function RootLayout({children}: Readonly<{
         <body
             suppressHydrationWarning
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Navbar/>
-        {children}
+        <AuthProvider>
+            <Navbar/>
+            {children}
+        </AuthProvider>
         </body>
         </html>
     );

@@ -1,0 +1,64 @@
+"use client";
+import React, {useState} from 'react';
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import {useForm} from "react-hook-form";
+import {useRouter} from "next/navigation";
+import axios from "axios";
+
+export default function RegisterPage() {
+    interface Inputs {
+        email: string;
+        name: string;
+        password: string;
+        rePassword: string;
+        phone: string;
+    }
+
+    const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const router = useRouter();
+    async function onSubmit(values: Inputs) {
+        try {
+            const response = await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", values);
+            console.log(response);
+            if (response?.data.message === "success") {
+                setErrorMessage(null);
+                router.push("/login");
+            }
+        } catch (error : unknown) {
+            if (axios.isAxiosError(error)) {
+                console.log(error.response?.data);
+                setErrorMessage(error.response?.data.message);
+            }
+        }
+    }
+
+    return (
+        <div>
+            <div className="w-1/2 mx-auto">
+                <h2 className="text-3xl tracking-tighter font-bold">Register</h2>
+                {errorMessage && <p className="text-red-700 text-center text-lg">{errorMessage}</p>}
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <Input {...register("name", {required: "Name is Required"})} className="p-5 my-5" type="text"
+                           placeholder="Name"/>
+                    {errors.name && <p className="text-red-700">{errors.name.message}</p>}
+                    <Input {...register("email", {required: "Email is Required"})} className="p-5 my-5" type="email"
+                           placeholder="Email"/>
+                    {errors.email && <p className="text-red-700">{errors.email.message}</p>}
+                    <Input {...register("password", {required: "Password is Required"})} className="p-5 my-5"
+                           type="password" placeholder="Password"/>
+                    {errors.password && <p className="text-red-700">{errors.password.message}</p>}
+                    <Input {...register("rePassword", {required: "Confirm Password is Required"})} className="p-5 my-5"
+                           type="password"
+                           placeholder="RePassword"/>
+                    {errors.rePassword && <p className="text-red-700">{errors.rePassword.message}</p>}
+                    <Input {...register("phone", {required: "Phone Number is Required"})} className="p-5 my-5"
+                           type="text" placeholder="Phone Number"/>
+                    {errors.phone && <p className="text-red-700">{errors.phone.message}</p>}
+                    <Button type="submit" className="px-10 py-5 my-5 cursor-pointer">Register</Button>
+                </form>
+            </div>
+        </div>
+    );
+}
