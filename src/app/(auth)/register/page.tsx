@@ -62,9 +62,14 @@ export default function RegisterPage() {
                     <Input {...register("phone", {required: "Phone Number is Required"})} className="p-5 my-5"
                            type="text" placeholder="Phone Number"/>
                     {errors.phone && <p className="text-red-700">{errors.phone.message}</p>}
-                    <Button type="submit" disabled={loading} className="px-10 py-5 my-5 cursor-pointer">
-                        {loading ? <Loader className={`animate-spin`} size={20}/> : "Register"}
-                    </Button>
+                    <div className="flex items-center gap-5">
+                        <Button type="submit" disabled={loading} className="px-10 py-5 my-5 cursor-pointer">
+                            {loading ? <Loader className={`animate-spin`} size={20}/> : "Register"}
+                        </Button>
+                        <p className="text-center">
+                            Already have an account? <a href="/login" className="text-blue-500 hover:underline">Login</a>
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>

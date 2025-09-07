@@ -6,6 +6,7 @@ import {getProducts} from "@/actions/products.action";
 import ProductsGridSystem from "@/components/products-comps/ProductsGridSystem";
 import {getServerSession} from "next-auth";
 import {OPTIONS} from "@/app/api/auth/[...nextauth]/route";
+import getUserCart from "@/actions/cart.action";
 
 export default async function Home() {
     const session = await getServerSession(OPTIONS);
@@ -14,6 +15,8 @@ export default async function Home() {
     const categories = Array.isArray(response?.data?.data) ? response.data.data : [];
 
     const {data: products} = await getProducts();
+
+    await getUserCart();
     return (
         <>
             <MainSlider/>

@@ -13,9 +13,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link";
 import {signOut, useSession} from "next-auth/react";
+import {Badge} from "@/components/ui/badge";
 
 export default function Navbar() {
     const session = useSession();
+
+
     return (
         <div className={`flex justify-between items-center py-5 px-10`}>
 
@@ -47,6 +50,7 @@ export default function Navbar() {
                         <Heart/>
                     </button>
                     <button>
+                        <Badge className={`absolute -top-3`}>0</Badge>
                         <ShoppingCart/>
                     </button>
                     <DropdownMenu>
