@@ -5,7 +5,8 @@ import {Input} from "@/components/ui/input";
 import {useForm} from "react-hook-form";
 import {useRouter} from "next/navigation";
 import {signIn} from "next-auth/react";
-// Test@1234
+import {Loader} from "lucide-react";
+
 function LoginPage() {
     interface Inputs {
         email: string;
@@ -15,8 +16,9 @@ function LoginPage() {
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
     const [errorMessage, setErrorMessage] = useState<any>(null);
     const router = useRouter();
-
+    const [loading, setLoading] = useState(false);
     async function onSubmit(values: Inputs) {
+        setLoading(true);
         console.log(values, "Login Info");
         try {
             const response = await signIn("credentials", {
@@ -31,6 +33,8 @@ function LoginPage() {
         } catch (error : unknown) {
             console.error(error);
             setErrorMessage(error);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -47,7 +51,9 @@ function LoginPage() {
                            type="password" placeholder="Password"/>
                     {errors.password && <p className="text-red-700">{errors.password.message}</p>}
 
-                    <Button type="submit" className="px-10 py-5 my-5 cursor-pointer">Login</Button>
+                    <Button type="submit" disabled={loading} className="px-10 py-5 my-5 cursor-pointer">
+                        {loading ? <Loader className={`animate-spin`} size={20}/> : "Login"}
+                    </Button>
                 </form>
             </div>
         </div>

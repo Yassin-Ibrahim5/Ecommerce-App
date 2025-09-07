@@ -5,6 +5,7 @@ import {Input} from "@/components/ui/input";
 import {useForm} from "react-hook-form";
 import {useRouter} from "next/navigation";
 import axios from "axios";
+import {Loader} from "lucide-react";
 
 export default function RegisterPage() {
     interface Inputs {
@@ -18,7 +19,10 @@ export default function RegisterPage() {
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
+
     async function onSubmit(values: Inputs) {
+        setLoading(true);
         try {
             const response = await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", values);
             console.log(response);
@@ -26,11 +30,13 @@ export default function RegisterPage() {
                 setErrorMessage(null);
                 router.push("/login");
             }
-        } catch (error : unknown) {
+        } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
                 console.log(error.response?.data);
                 setErrorMessage(error.response?.data.message);
             }
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -56,7 +62,9 @@ export default function RegisterPage() {
                     <Input {...register("phone", {required: "Phone Number is Required"})} className="p-5 my-5"
                            type="text" placeholder="Phone Number"/>
                     {errors.phone && <p className="text-red-700">{errors.phone.message}</p>}
-                    <Button type="submit" className="px-10 py-5 my-5 cursor-pointer">Register</Button>
+                    <Button type="submit" disabled={loading} className="px-10 py-5 my-5 cursor-pointer">
+                        {loading ? <Loader className={`animate-spin`} size={20}/> : "Register"}
+                    </Button>
                 </form>
             </div>
         </div>
