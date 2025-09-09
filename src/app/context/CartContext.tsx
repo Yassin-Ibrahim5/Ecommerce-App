@@ -1,8 +1,15 @@
 "use client";
 import React, {createContext, useContext, useEffect, useState} from "react";
 import {getUserCart} from "@/actions/cart.action";
+import {CartData} from "@/app/types/cart.model";
 
-const CartContext = createContext({});
+interface CartContextType {
+    cartDetails: CartData | null;
+}
+
+const CartContext = createContext<CartContextType>({
+    cartDetails: null,
+});
 
 export default function CartContextProvider({children}: { children: React.ReactNode }) {
 

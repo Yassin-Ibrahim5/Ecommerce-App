@@ -14,11 +14,13 @@ import {
 import Link from "next/link";
 import {signOut, useSession} from "next-auth/react";
 import {Badge} from "@/components/ui/badge";
+import {useCart} from "@/app/context/CartContext";
 
 export default function Navbar() {
     const session = useSession();
 
-
+    const {cartDetails} = useCart();
+    console.log(cartDetails, "cart details from navbar");
     return (
         <div className={`flex justify-between items-center py-5 px-10`}>
 
@@ -47,10 +49,11 @@ export default function Navbar() {
                 </NavigationMenuList>
                 <NavigationMenuList className={`font-bold gap-4`}>
                     <button>
+                        <Badge className={`absolute -top-4`}>0</Badge>
                         <Heart/>
                     </button>
                     <button>
-                        <Badge className={`absolute -top-3`}>0</Badge>
+                        {cartDetails?.numOfCartItems && <Badge className={`absolute -top-4`}>{cartDetails?.numOfCartItems}</Badge>}
                         <ShoppingCart/>
                     </button>
                     <DropdownMenu>
