@@ -48,7 +48,10 @@ export default function ProductDetailsComp({productDetails}: { productDetails: P
                         <span>{productDetails.ratingsAverage}</span>
                     </div>
                 </div>
-                <button className={`bg-black text-white w-full py-4 rounded-lg transition-all duration-300 hover:bg-blue-950 cursor-pointer`}>+ Add to Cart</button>
+                <button
+                    className={`bg-black text-white w-full py-4 rounded-lg transition-all duration-300 hover:bg-[#222] cursor-pointer`}>+
+                    Add to Cart
+                </button>
             </div>
         </div>
     );

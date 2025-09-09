@@ -20,7 +20,6 @@ export default function Navbar() {
     const session = useSession();
 
     const {cartDetails} = useCart();
-    console.log(cartDetails, "cart details from navbar");
     return (
         <div className={`flex justify-between items-center py-5 px-10`}>
 
@@ -54,7 +53,7 @@ export default function Navbar() {
                     </button>
                     <button>
                         {cartDetails?.numOfCartItems && <Badge className={`absolute -top-4`}>{cartDetails?.numOfCartItems}</Badge>}
-                        <ShoppingCart/>
+                        <Link href="/cart"><ShoppingCart/></Link>
                     </button>
                     <DropdownMenu>
                         <DropdownMenuTrigger><User className={`focus:border-0 cursor-pointer`}

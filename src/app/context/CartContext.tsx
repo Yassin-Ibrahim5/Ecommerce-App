@@ -17,7 +17,7 @@ export default function CartContextProvider({children}: { children: React.ReactN
     async function fetchCart() {
         const response = await getUserCart();
         setCartDetails(response?.data);
-        console.log(response?.data, "response");
+        console.log(response?.data, "cart");
     }
 
     useEffect(() => {

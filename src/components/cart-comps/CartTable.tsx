@@ -26,17 +26,22 @@ function CartTable() {
                                 <div className="flex items-center justify-center gap-4">
                                     <div className="relative">
                                         <div className="absolute top-[-10] left-[-10px]"><Badge>X</Badge></div>
-                                        <Image src={product.product.imageCover} alt={product.product.title} width={60} height={60}/>
+                                        <Image src={product.product.imageCover} alt={product.product.title} width={60}
+                                               height={60}/>
                                     </div>
-                                    <h2>{product.product.title}</h2>
+                                    <h2>{product.product.title.split(" ").slice(0, 2).join(" ")}</h2>
                                 </div>
                             </TableCell>
                             <TableCell className="p-6 text-center">{product.price} EGP</TableCell>
                             <TableCell className="p-6 text-center">
                                 <div className="flex items-center justify-center gap-3">
-                                    <button className={`border-1 px-2 py-1 rounded-md cursor-pointer border-slate-500`}>-</button>
+                                    <button
+                                        className={`border-1 px-2 py-1 rounded-md cursor-pointer border-slate-500`}>-
+                                    </button>
                                     <span>{product.count}</span>
-                                    <button className={`border-1 px-2 py-1 rounded-md cursor-pointer border-slate-500`}>+</button>
+                                    <button
+                                        className={`border-1 px-2 py-1 rounded-md cursor-pointer border-slate-500`}>+
+                                    </button>
                                 </div>
                             </TableCell>
                             <TableCell className="text-center">{product.price * product.count} EGP</TableCell>
@@ -44,7 +49,8 @@ function CartTable() {
                     ))}
                     <TableRow className={`bg-slate-300`}>
                         <TableCell className={`p-6 text-center`}>Total</TableCell>
-                        <TableCell className={`p-6 text-center`} colSpan={2}>{cartDetails?.data.totalCartPrice} EGP</TableCell>
+                        <TableCell className={`p-6 text-center`}
+                                   colSpan={2}>{cartDetails?.data.totalCartPrice} EGP</TableCell>
                         <TableCell className={`p-6 text-center`}><Button
                             className={`px-10 py-5 cursor-pointer`}>Checkout</Button></TableCell>
                     </TableRow>
