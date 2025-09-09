@@ -6,14 +6,34 @@ import Image from "next/image";
 import {StarRating} from "react-flexible-star-rating";
 import {Heart, ShoppingCart, ZoomIn} from "lucide-react";
 import Link from "next/link";
+import {addToCart} from "@/actions/cart.action";
+import toast from "react-hot-toast";
+import {useCart} from "@/app/context/CartContext";
 
 export default function ProductCard({product}: { product: Product }) {
+
+    const {fetchCart} = useCart();
+
+    async function handleAddToCart(productId: string) {
+        try {
+            const response = await addToCart(productId);
+            toast.success("Product added successfully to your cart");
+            await fetchCart();
+            return response;
+        } catch (error) {
+            console.log(error, "error onclick add to product");
+            toast.error("Something went wrong");
+        }
+    }
+
     return (
         <>
             <Card className={`relative group overflow-hidden`}>
                 <div
                     className={`flex flex-col absolute z-20 top-[150px] right-[-100px] group-hover:right-[10px] transition-all duration-500`}>
-                    <button className="p-2 text-black bg-slate-200 hover:text-blue-700 cursor-pointer z">
+                    <button onClick={() => {
+                        handleAddToCart(product._id);
+                    }} className="p-2 text-black bg-slate-200 hover:text-blue-700 cursor-pointer z">
                         <ShoppingCart/>
                     </button>
                     <button className="p-2 text-black bg-slate-200 hover:text-blue-700 cursor-pointer z">

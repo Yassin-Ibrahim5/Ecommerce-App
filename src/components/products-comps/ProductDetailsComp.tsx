@@ -7,8 +7,25 @@ import {Navigation, Pagination} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Image from "next/image";
+import {addToCart} from "@/actions/cart.action";
+import toast from "react-hot-toast";
+import {useCart} from "@/app/context/CartContext";
 
 export default function ProductDetailsComp({productDetails}: { productDetails: ProductDetail }) {
+    const {fetchCart} = useCart();
+
+    async function handleAddToCart(productId: string) {
+        try {
+            const response = await addToCart(productId);
+            toast.success("Product added successfully to your cart");
+            await fetchCart();
+            return response;
+        } catch (error) {
+            console.log(error, "error onclick add to product");
+            toast.error("Something went wrong");
+        }
+    }
+
     return (
         <div className={`flex justify-between items-center`}>
             <div className="w-full md:w-1/2 py-5">
@@ -48,8 +65,10 @@ export default function ProductDetailsComp({productDetails}: { productDetails: P
                         <span>{productDetails.ratingsAverage}</span>
                     </div>
                 </div>
-                <button
-                    className={`bg-black text-white w-full py-4 rounded-lg transition-all duration-300 hover:bg-[#222] cursor-pointer`}>+
+                <button onClick={() => {
+                    handleAddToCart(productDetails._id);
+                }}
+                        className={`bg-black text-white w-full py-4 rounded-lg transition-all duration-300 hover:bg-[#222] cursor-pointer`}>+
                     Add to Cart
                 </button>
             </div>

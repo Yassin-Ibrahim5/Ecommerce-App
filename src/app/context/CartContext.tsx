@@ -5,15 +5,19 @@ import {CartData} from "@/app/types/cart.model";
 
 interface CartContextType {
     cartDetails: CartData | null;
+    fetchCart: () => Promise<void>;
 }
 
 const CartContext = createContext<CartContextType>({
     cartDetails: null,
+    fetchCart: async () => {
+    },
 });
 
 export default function CartContextProvider({children}: { children: React.ReactNode }) {
 
     const [cartDetails, setCartDetails] = useState(null);
+
     async function fetchCart() {
         const response = await getUserCart();
         setCartDetails(response?.data);
@@ -24,7 +28,7 @@ export default function CartContextProvider({children}: { children: React.ReactN
         fetchCart();
     }, []);
 
-    return <CartContext.Provider value={{cartDetails}}>
+    return <CartContext.Provider value={{cartDetails, fetchCart}}>
         {children}
     </CartContext.Provider>
 }

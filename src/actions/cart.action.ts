@@ -39,7 +39,6 @@ async function addToCart(productId: string) {
                 token: token as string
             }
         });
-        console.log(response, "add to cart");
         return {
             data: response?.data,
             status: response?.status,

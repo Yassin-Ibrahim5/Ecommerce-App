@@ -37,9 +37,6 @@ export default function Navbar() {
                         <Link href="/products" className="font-semibold">Products</Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/cart" className="font-semibold">Cart</Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
                         <Link href="/categories" className="font-semibold">Categories</Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
@@ -49,11 +46,11 @@ export default function Navbar() {
                 <NavigationMenuList className={`font-bold gap-4`}>
                     <button>
                         <Badge className={`absolute -top-4`}>0</Badge>
-                        <Heart/>
+                        <Link href="/"><Heart className="hover:text-red-600 transition-all duration-200"/></Link>
                     </button>
                     <button>
                         {cartDetails?.numOfCartItems && <Badge className={`absolute -top-4`}>{cartDetails?.numOfCartItems}</Badge>}
-                        <Link href="/cart"><ShoppingCart/></Link>
+                        <Link href="/cart"><ShoppingCart className="hover:text-blue-600 transition-all duration-200"/></Link>
                     </button>
                     <DropdownMenu>
                         <DropdownMenuTrigger><User className={`focus:border-0 cursor-pointer`}
