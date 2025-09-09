@@ -5,9 +5,25 @@ import Image from "next/image";
 import {Badge} from "@/components/ui/badge";
 import {Button} from "@/components/ui/button";
 import {useCart} from "@/app/context/CartContext";
+import {removeFromCart} from "@/actions/cart.action";
+import toast from "react-hot-toast";
 
 function CartTable() {
-    const {cartDetails} = useCart();
+    const {cartDetails, fetchCart} = useCart();
+
+    async function handleRemoveFromCart(productId: string) {
+        try {
+            const response = await removeFromCart(productId);
+            console.log(response, "remove product from cart")
+            await fetchCart();
+            toast.success("Product removed successfully from your cart");
+            return response;
+        } catch (error) {
+            console.log(error, "error remove product from cart");
+            toast.error("Something went wrong");
+        }
+    }
+
     return (
         <div className={`w-3/4 mx-auto`}>
             <Table>
@@ -25,7 +41,9 @@ function CartTable() {
                             <TableCell className={`p-6 text-center`}>
                                 <div className="flex items-center justify-center gap-4">
                                     <div className="relative">
-                                        <div className="absolute top-[-10] left-[-10px]"><Badge>X</Badge></div>
+                                        <Badge onClick={() => {
+                                            handleRemoveFromCart(product.product._id);
+                                        }} className="absolute top-[-10] left-[-10px] cursor-pointer">X</Badge>
                                         <Image src={product.product.imageCover} alt={product.product.title} width={60}
                                                height={60}/>
                                     </div>
