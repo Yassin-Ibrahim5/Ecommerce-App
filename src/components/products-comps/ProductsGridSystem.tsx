@@ -2,12 +2,7 @@ import React from 'react';
 import {Product} from "@/app/types/product.model";
 import ProductCard from "@/components/products-comps/ProductCard";
 
-export default function ProductsGridSystem({products}: {
-    products: {
-        data: Product[],
-    }
-}) {
-    console.log(products, "products through grid system");
+export default function ProductsGridSystem({products}: { products: { data: Product[], } }) {
     return (
         <div className={`container mx-auto p-10`}>
             <h2 className="text-4xl text-start tracking-tighter font-bold">Products</h2>
