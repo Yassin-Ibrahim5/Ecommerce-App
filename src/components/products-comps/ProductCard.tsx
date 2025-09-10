@@ -9,16 +9,43 @@ import Link from "next/link";
 import {addToCart} from "@/actions/cart.action";
 import toast from "react-hot-toast";
 import {useCart} from "@/app/context/CartContext";
+import {addToWishlist, removeFromWishlist} from "@/actions/wishlist.action";
+import {useWishlist} from "@/app/context/WishlistContext";
 
 export default function ProductCard({product}: { product: Product }) {
 
     const {fetchCart} = useCart();
+    const {wishlist, fetchWishlist} = useWishlist();
 
     async function handleAddToCart(productId: string) {
         try {
             const response = await addToCart(productId);
             toast.success("Product added successfully to your cart");
             await fetchCart();
+            return response;
+        } catch (error) {
+            console.log(error, "error onclick add to product");
+            toast.error("Something went wrong");
+        }
+    }
+
+    async function handleAddToWishlist(productId: string) {
+        try {
+            const response = await addToWishlist(productId);
+            toast.success("Product added successfully to your wishlist");
+            await fetchWishlist()
+            return response;
+        } catch (error) {
+            console.log(error, "error onclick add to product");
+            toast.error("Something went wrong");
+        }
+    }
+
+    async function handleRemoveFromWishlist(productId: string) {
+        try {
+            const response = await removeFromWishlist(productId);
+            toast.success("Product removed successfully from your wishlist");
+            await fetchWishlist()
             return response;
         } catch (error) {
             console.log(error, "error onclick add to product");
@@ -36,8 +63,14 @@ export default function ProductCard({product}: { product: Product }) {
                     }} className="p-2 text-black bg-slate-200 hover:text-blue-700 cursor-pointer z">
                         <ShoppingCart/>
                     </button>
-                    <button className="p-2 text-black bg-slate-200 hover:text-blue-700 cursor-pointer z">
-                        <Heart/>
+                    <button onClick={() => {
+                        if (wishlist?.data?.some((item) => item._id === product._id)) {
+                            handleRemoveFromWishlist(product._id);
+                        } else {
+                            handleAddToWishlist(product._id);
+                        }
+                    }} className="p-2 text-black bg-slate-200 hover:text-red-500 cursor-pointer z">
+                        <Heart fill={wishlist?.data?.some((item) => item._id === product._id) ? "red" : "none"} className={wishlist?.data?.some((item) => item._id === product._id) ? "text-red-500" : ""}/>
                     </button>
                     <button className="p-2 text-black bg-slate-200 hover:text-blue-700 cursor-pointer z">
                         <Link href={`/products/${product._id}`}>

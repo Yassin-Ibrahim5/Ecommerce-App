@@ -68,7 +68,7 @@ export default function ProductDetailsComp({productDetails}: { productDetails: P
                 <button onClick={() => {
                     handleAddToCart(productDetails._id);
                 }}
-                        className={`bg-black text-white w-full py-4 rounded-lg transition-all duration-300 hover:bg-[#222] cursor-pointer`}>+
+                        className={`bg-black text-white border-1 border-black w-full py-4 rounded-lg transition-all duration-300 hover:bg-white hover:text-black cursor-pointer`}>+
                     Add to Cart
                 </button>
             </div>

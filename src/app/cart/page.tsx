@@ -1,8 +1,7 @@
-"use server";
 import CartTable from "@/components/cart-comps/CartTable";
 
 
-export default async function CartPage() {
+export default function CartPage() {
 
     return <div>
         <CartTable/>

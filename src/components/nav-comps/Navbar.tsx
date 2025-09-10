@@ -15,11 +15,14 @@ import Link from "next/link";
 import {signOut, useSession} from "next-auth/react";
 import {Badge} from "@/components/ui/badge";
 import {useCart} from "@/app/context/CartContext";
+import {useWishlist} from "@/app/context/WishlistContext";
 
 export default function Navbar() {
     const session = useSession();
 
     const {cartDetails} = useCart();
+    const {wishlist} = useWishlist();
+
     return (
         <div className={`flex justify-between items-center py-5 px-10`}>
 
@@ -45,12 +48,18 @@ export default function Navbar() {
                 </NavigationMenuList>
                 <NavigationMenuList className={`font-bold gap-4`}>
                     <button>
-                        <Badge className={`absolute -top-4`}>0</Badge>
-                        <Link href="/"><Heart className="hover:text-red-600 transition-all duration-200"/></Link>
+                        {wishlist?.count ?
+                                <Badge className={`absolute -top-4`}>{wishlist.count}</Badge> :
+                                null}
+                        <Link href="/wishlist"><Heart
+                            className="hover:text-red-600 transition-all duration-200"/></Link>
                     </button>
                     <button>
-                        {cartDetails?.numOfCartItems && <Badge className={`absolute -top-4`}>{cartDetails?.numOfCartItems}</Badge>}
-                        <Link href="/cart"><ShoppingCart className="hover:text-blue-600 transition-all duration-200"/></Link>
+                        {cartDetails?.numOfCartItems ?
+                            <Badge className={`absolute -top-4`}>{cartDetails?.numOfCartItems}</Badge> :
+                            null}
+                        <Link href="/cart"><ShoppingCart
+                            className="hover:text-blue-600 transition-all duration-200"/></Link>
                     </button>
                     <DropdownMenu>
                         <DropdownMenuTrigger><User className={`focus:border-0 cursor-pointer`}

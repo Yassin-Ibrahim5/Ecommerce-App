@@ -1,15 +1,15 @@
 export interface Brand {
-    _id: string;
+    image: string;
     name: string;
     slug: string;
-    image: string;
+    _id: string;
 }
 
 export interface Category {
-    _id: string;
+    image: string;
     name: string;
     slug: string;
-    image: string;
+    _id: string;
 }
 
 export interface SubCategory {
