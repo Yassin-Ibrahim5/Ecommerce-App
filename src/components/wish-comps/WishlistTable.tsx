@@ -13,7 +13,7 @@ import {HeartOff} from "lucide-react";
 
 export default function WishlistTable() {
     const {wishlist, fetchWishlist} = useWishlist();
-    const {cartDetails, fetchCart} = useCart();
+    const {fetchCart} = useCart();
 
     async function handleAddToCart(productId: string) {
         try {
@@ -41,7 +41,7 @@ export default function WishlistTable() {
 
     return (
         <>
-            {wishlist?.data?.length !== 0 ?
+            {wishlist?.count !== 0 ?
                 (<div className={`w-3/4 mx-auto`}>
                     <Table>
                         <TableHeader>
@@ -82,8 +82,17 @@ export default function WishlistTable() {
                         </TableBody>
                     </Table>
                 </div>) :
-                <div className={`w-3/4 mx-auto flex flex-col items-center justify-center gap-5`}>
-
+                <div className={`w-1/2 mx-auto flex flex-col items-center justify-center gap-5 my-10`}>
+                    <div className={`flex items-center justify-center rounded-full bg-slate-100 p-10`}>
+                        <HeartOff className={`text-6xl text-black`} size={62}/>
+                    </div>
+                    <h2 className={`text-3xl font-bold`}>Your wishlist is empty!</h2>
+                    <p className={`text-md w-[75%] text-center text-slate-500`}>Found something you like? Tap on the heart shaped icon next
+                        to the item to add it to your wishlist! All your saved items will appear here.</p>
+                    <Link href={`/`}
+                          className={`px-8 py-4 hover:bg-black hover:text-white cursor-pointer rounded-lg border-1 transition-all duration-300 border-black`}>
+                        Continue Shopping
+                    </Link>
                 </div>
             }
         </>
