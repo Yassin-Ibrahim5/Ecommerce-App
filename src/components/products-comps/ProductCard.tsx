@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card"
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Product} from "@/app/types/product.model";
 import Image from "next/image";
 import {StarRating} from "react-flexible-star-rating";
@@ -70,7 +70,9 @@ export default function ProductCard({product}: { product: Product }) {
                             handleAddToWishlist(product._id);
                         }
                     }} className="p-2 text-black bg-slate-200 hover:text-red-500 cursor-pointer z">
-                        <Heart fill={wishlist?.data?.some((item) => item._id === product._id) ? "red" : "none"} className={wishlist?.data?.some((item) => item._id === product._id) ? "text-red-500" : ""}/>
+                        <Heart fill={wishlist?.data?.some((item) => item._id === product._id) ? "red" : "none"}
+                               className={wishlist?.data?.some((item) => item._id === product._id) ? "text-red-500" : ""}
+                        />
                     </button>
                     <button className="p-2 text-black bg-slate-200 hover:text-blue-700 cursor-pointer z">
                         <Link href={`/products/${product._id}`}>
