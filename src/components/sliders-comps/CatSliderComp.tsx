@@ -11,7 +11,6 @@ import {Category} from "@/app/types/category.model";
 function CatSliderComp({category}: { category: Category[] }) {
     return (
         <div className={`container mx-auto`}>
-            <h2 className={`text-3xl text-start`}>Categories Slider</h2>
             <Swiper
                 slidesPerView={4}
                 spaceBetween={3}

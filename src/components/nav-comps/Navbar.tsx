@@ -24,8 +24,7 @@ export default function Navbar() {
     const {wishlist} = useWishlist();
 
     return (
-        <div className={`flex justify-between items-center py-5 px-10`}>
-
+        <div className={`flex justify-between items-center py-4 px-10 sticky top-0 z-50 bg-white shadow-md`}>
             <NavigationMenu className={`text-md p-5 flex justify-between max-w-7xl items-center mx-auto`}>
                 <NavigationMenuList className={`text-4xl font-semibold tracking-tighter`}>
                     <NavigationMenuItem>
