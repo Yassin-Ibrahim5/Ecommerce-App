@@ -8,7 +8,7 @@ interface ShippingAddressTypes {
     city: string;
 }
 
-async function makeCashOrder(cartId: string, shippingAddress: {shippingAddress: ShippingAddressTypes}) {
+async function makeCashOrder(cartId: string, shippingAddress: { shippingAddress: ShippingAddressTypes }) {
     try {
         const token = await getUserToken();
         const response = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}`, {shippingAddress}, {
@@ -26,7 +26,7 @@ async function makeCashOrder(cartId: string, shippingAddress: {shippingAddress: 
         if (axios.isAxiosError(error)) {
             return {
                 data: [],
-                status: error.response?.status ?? 500,
+                status: error.response?.status,
                 message: error.response?.data.message || "Something went wrong. Please try again later.",
             }
         }
@@ -38,4 +38,35 @@ async function makeCashOrder(cartId: string, shippingAddress: {shippingAddress: 
     }
 }
 
-export {makeCashOrder};
+async function makeOnlinePayment(cartId: string, shippingAddress: ShippingAddressTypes) {
+    try {
+        const token = await getUserToken();
+        const response = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`, {
+            shippingAddress: {
+                details: shippingAddress.details,
+                phone: shippingAddress.phone,
+                city: shippingAddress.city,
+            }
+        }, {
+            headers: {
+                token: token as string
+            }
+        });
+        console.log(response.data, "make online order");
+        return {
+            data: response?.data,
+            status: response?.status,
+            message: response?.data.message,
+        }
+    } catch (error: unknown) {
+        if (axios.isAxiosError(error)) {
+            return {
+                data: [],
+                status: error.response?.status,
+                message: error.response?.data.message,
+            }
+        }
+    }
+}
+
+export {makeCashOrder, makeOnlinePayment};

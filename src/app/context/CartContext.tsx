@@ -7,17 +7,20 @@ import {getUserToken} from "@/lib/token.utils";
 interface CartContextType {
     cartDetails: CartData | null;
     fetchCart: () => Promise<void>;
+    setCartDetails: (cartDetails: CartData | null) => void;
 }
 
 const CartContext = createContext<CartContextType>({
     cartDetails: null,
     fetchCart: async () => {
     },
+    setCartDetails: (cartDetails: CartData | null) => {
+    }
 });
 
 export default function CartContextProvider({children}: { children: React.ReactNode }) {
 
-    const [cartDetails, setCartDetails] = useState(null);
+    const [cartDetails, setCartDetails] = useState<CartData | null>(null);
 
     async function fetchCart() {
         const token = await getUserToken();
@@ -34,7 +37,7 @@ export default function CartContextProvider({children}: { children: React.ReactN
         fetchCart();
     }, []);
 
-    return <CartContext.Provider value={{cartDetails, fetchCart}}>
+    return <CartContext.Provider value={{cartDetails, fetchCart, setCartDetails}}>
         {children}
     </CartContext.Provider>
 }
