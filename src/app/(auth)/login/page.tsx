@@ -30,6 +30,8 @@ function LoginPage() {
             console.log(response);
             if (response?.ok) {
                 router.push("/");
+            } else {
+                setErrorMessage("Invalid email or password");
             }
         } catch (error: unknown) {
             console.error(error);

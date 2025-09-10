@@ -33,7 +33,7 @@ export default function RegisterPage() {
         } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
                 console.log(error.response?.data);
-                setErrorMessage(error.response?.data.message);
+                setErrorMessage(error.response?.data.errors?.msg ? error.response?.data.errors?.msg : error.response?.data.message);
             }
         } finally {
             setLoading(false);
@@ -67,7 +67,8 @@ export default function RegisterPage() {
                             {loading ? <Loader className={`animate-spin`} size={20}/> : "Register"}
                         </Button>
                         <p className="text-center">
-                            Already have an account? <a href="/login" className="text-blue-500 hover:underline">Login</a>
+                            Already have an account? <a href="/login"
+                                                        className="text-blue-500 hover:underline">Login</a>
                         </p>
                     </div>
                 </form>
