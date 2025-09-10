@@ -41,7 +41,7 @@ function LoginPage() {
 
     return (
         <div>
-            <div className="w-1/2 mx-auto">
+            <div className="w-1/2 mx-auto my-10">
                 <h2 className="text-3xl tracking-tighter font-bold">Login</h2>
                 {errorMessage && <p className="text-red-700 text-center text-lg">{errorMessage}</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
