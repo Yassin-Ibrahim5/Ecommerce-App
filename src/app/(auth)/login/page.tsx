@@ -7,6 +7,7 @@ import {useRouter} from "next/navigation";
 import {signIn} from "next-auth/react";
 import {Loader} from "lucide-react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
     interface Inputs {
@@ -30,6 +31,8 @@ export default function LoginPage() {
             });
             console.log(response);
             if (response?.ok) {
+                setErrorMessage(null);
+                toast.success("Login Successful!");
                 router.push("/");
             } else {
                 setErrorMessage("Invalid email or password");

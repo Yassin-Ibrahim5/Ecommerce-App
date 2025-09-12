@@ -6,6 +6,7 @@ import {useForm} from "react-hook-form";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import {Loader} from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function RegisterPage() {
     interface Inputs {
@@ -28,6 +29,7 @@ export default function RegisterPage() {
             console.log(response);
             if (response?.data.message === "success") {
                 setErrorMessage(null);
+                toast.success("Registration Successful! Please login to continue.");
                 router.push("/login");
             }
         } catch (error: unknown) {
