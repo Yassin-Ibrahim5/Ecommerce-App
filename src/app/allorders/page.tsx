@@ -1,12 +1,16 @@
 import React from 'react';
-import {useCart} from "@/app/context/CartContext";
-import {getUserOrders} from "@/actions/orders.action";
-import OrderTable from "@/components/orders-comps/OrderTable";
+import OrdersTable from "@/components/orders-comps/OrdersTable";
 
 export default async function AllOrders() {
+
+    //
+    // if (userId) {
+    //     const orders = await getUserOrders(userId);
+    //     console.log(orders, "orders");
+    // }
     return (
         <div>
-            <OrderTable/>
+            <OrdersTable/>
         </div>
     );
 }

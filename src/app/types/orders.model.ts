@@ -32,7 +32,7 @@ export interface Brand {
     image: string;
 }
 
-export interface Product {
+export interface OrderProduct {
     subcategory: SubCategory[];
     ratingsQuantity: number;
     _id: string;
@@ -47,7 +47,7 @@ export interface Product {
 export interface CartItem {
     count: number;
     _id: string;
-    product: Product;
+    product: OrderProduct;
     price: number;
 }
 
@@ -63,10 +63,14 @@ export interface Order {
     user: User;
     cartItems: CartItem[];
     paidAt?: string;
+    deliveredAt?: string;
     createdAt: string;
     updatedAt: string;
     id: number;
     __v: number;
 }
 
-export type Orders = Order[];
+export interface OrdersResponse {
+    data: Order[];
+    status: number;
+}

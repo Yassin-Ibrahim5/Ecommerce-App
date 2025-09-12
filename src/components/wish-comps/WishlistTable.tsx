@@ -10,9 +10,10 @@ import {addToCart} from "@/actions/cart.action";
 import toast from "react-hot-toast";
 import {removeFromWishlist} from "@/actions/wishlist.action";
 import {HeartOff} from "lucide-react";
+import LoadingPage from "@/app/wishlist/loading";
 
 export default function WishlistTable() {
-    const {wishlist, fetchWishlist} = useWishlist();
+    const {wishlist, fetchWishlist, loading} = useWishlist();
     const {fetchCart} = useCart();
 
     async function handleAddToCart(productId: string) {
@@ -41,7 +42,8 @@ export default function WishlistTable() {
 
     return (
         <>
-            {wishlist?.count !== 0 ?
+            {loading ? <LoadingPage/> :
+                (wishlist?.count !== 0 ?
                 (<div className={`w-3/4 mx-auto`}>
                     <Table>
                         <TableHeader>
@@ -94,6 +96,7 @@ export default function WishlistTable() {
                         Continue Shopping
                     </Link>
                 </div>
+                )
             }
         </>
     );

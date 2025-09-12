@@ -1,42 +1,48 @@
 "use client";
-import React, {useState, useContext, createContext, useEffect} from "react";
-import {Orders} from "@/app/types/orders.model";
+import React, {createContext, useContext, useEffect, useState} from "react";
 import {useCart} from "@/app/context/CartContext";
 import {getUserOrders} from "@/actions/orders.action";
-import {getUserToken} from "@/lib/token.utils";
-
+import {Order} from "@/app/types/orders.model";
 
 interface OrdersContextType {
-    orders: Orders | null;
+    orders: Order[] | null;
     fetchOrders: () => Promise<void>;
+    loading: boolean;
 }
 
-export const OrdersContext = createContext<OrdersContextType>({
+const OrdersContext = createContext<OrdersContextType>({
     orders: null,
-    fetchOrders: async() => {}
+    fetchOrders: async () => {
+    },
+    loading: true
 });
 
 export default function OrdersContextProvider({children}: { children: React.ReactNode }) {
-    const [orders, setOrders] = useState(null);
+    const [orders, setOrders] = useState<Order[] | null>(null);
     const {cartDetails} = useCart();
+    const userId = cartDetails?.data?.cartOwner;
+    const [loading, setLoading] = useState(true);
     async function fetchOrders() {
-        const token = await getUserToken();
-        if (!token) {
-            return;
+        if (userId) {
+            const response = await getUserOrders(userId);
+            setOrders(response?.data);
+            console.log(response, "orders");
+            setLoading(false);
+            return response?.data;
+        } else {
+            setLoading(true);
+            console.log("No user ID found");
         }
-        const response = await getUserOrders(cartDetails?.data.cartOwner as string);
-        setOrders(response?.data);
-        console.log(response?.data, "orders");
-        return response?.data;
     }
 
     useEffect(() => {
         fetchOrders();
-    }, []);
-    return <OrdersContext.Provider value={{orders, fetchOrders}}>
+    }, [userId]);
+
+    return <OrdersContext.Provider value={{orders, fetchOrders, loading}}>
         {children}
     </OrdersContext.Provider>
-}
+};
 
 export function useOrders() {
     return useContext(OrdersContext);

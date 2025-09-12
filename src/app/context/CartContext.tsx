@@ -8,6 +8,7 @@ interface CartContextType {
     cartDetails: CartData | null;
     fetchCart: () => Promise<void>;
     setCartDetails: (cartDetails: CartData | null) => void;
+    loading: boolean;
 }
 
 const CartContext = createContext<CartContextType>({
@@ -15,21 +16,25 @@ const CartContext = createContext<CartContextType>({
     fetchCart: async () => {
     },
     setCartDetails: (cartDetails: CartData | null) => {
-    }
+    },
+    loading: true
 });
 
 export default function CartContextProvider({children}: { children: React.ReactNode }) {
 
     const [cartDetails, setCartDetails] = useState<CartData | null>(null);
-
+    const [loading, setLoading] = useState(true);
     async function fetchCart() {
         const token = await getUserToken();
         if (!token) {
+            setLoading(false);
             return;
         }
         const response = await getUserCart();
         setCartDetails(response?.data);
+        localStorage.setItem("userId", response?.data?.cartOwner);
         console.log(response?.data, "cart");
+        setLoading(false);
         return response?.data;
     }
 
@@ -37,7 +42,7 @@ export default function CartContextProvider({children}: { children: React.ReactN
         fetchCart();
     }, []);
 
-    return <CartContext.Provider value={{cartDetails, fetchCart, setCartDetails}}>
+    return <CartContext.Provider value={{cartDetails, fetchCart, setCartDetails, loading}}>
         {children}
     </CartContext.Provider>
 }
