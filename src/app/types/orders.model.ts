@@ -69,8 +69,3 @@ export interface Order {
     id: number;
     __v: number;
 }
-
-export interface OrdersResponse {
-    data: Order[];
-    status: number;
-}

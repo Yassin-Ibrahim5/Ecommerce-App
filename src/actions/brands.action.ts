@@ -1,9 +1,8 @@
-"use server";
 import axios from "axios";
 
-async function getCategories() {
+async function getBrands() {
     try {
-        const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/categories`);
+        const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/brands`);
         return {
             data: response?.data,
             status: response?.status,
@@ -20,4 +19,4 @@ async function getCategories() {
     }
 }
 
-export {getCategories}
+export {getBrands};

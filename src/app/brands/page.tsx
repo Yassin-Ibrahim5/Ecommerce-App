@@ -1,7 +1,8 @@
-"use client";
 import React from 'react';
-import {useSession} from "next-auth/react";
+import {getBrands} from "@/actions/brands.action";
+import BrandsGridSystem from "@/components/brands-comps/BrandsGridSystem";
 
-export default function BrandsPage() {
-    return <div>Brands</div>;
+export default async function BrandsPage() {
+    const response = await getBrands();
+    return <div><BrandsGridSystem brands={response?.data}/></div>;
 }
