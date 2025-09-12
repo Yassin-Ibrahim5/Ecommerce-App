@@ -6,8 +6,9 @@ import {useForm} from "react-hook-form";
 import {useRouter} from "next/navigation";
 import {signIn} from "next-auth/react";
 import {Loader} from "lucide-react";
+import Link from "next/link";
 
-function LoginPage() {
+export default function LoginPage() {
     interface Inputs {
         email: string;
         password: string;
@@ -57,15 +58,18 @@ function LoginPage() {
                         <Button type="submit" disabled={loading} className="px-10 py-5 my-5 cursor-pointer">
                             {loading ? <Loader className={`animate-spin`} size={20}/> : "Login"}
                         </Button>
-                        <p className="text-center">
-                            Don't have an account? <a href="/register" className="text-blue-500 hover:underline">Register</a>
-                        </p>
                     </div>
+                    <p className="mb-2">
+                        <Link href="/forgot-password" className="text-blue-500 hover:underline">Forgot your
+                            password?</Link>
+                    </p>
+                    <p className="mb-2">
+                        Don't have an account? <Link href="/register"
+                                                     className="text-blue-500 hover:underline">Register</Link>
+                    </p>
+
                 </form>
             </div>
         </div>
-
     );
 }
-
-export default LoginPage;
