@@ -21,7 +21,6 @@ export default function VerifyCode() {
         setLoading(true);
         try {
             const response = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode`, values);
-            console.log(response);
             if (response?.data.status === "Success") {
                 toast.success("Security Code Verified Successfully");
                 router.push("/reset-password");
@@ -31,7 +30,6 @@ export default function VerifyCode() {
             }
         } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
-                console.log(error.response?.data);
                 setErrorMessage(error.response?.data.message);
             }
         } finally {

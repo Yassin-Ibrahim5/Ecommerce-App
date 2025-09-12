@@ -17,12 +17,10 @@ export default function CartTable() {
     async function handleRemoveFromCart(productId: string) {
         try {
             const response = await removeFromCart(productId);
-            console.log(response, "remove product from cart")
             await fetchCart();
             toast.success("Product removed successfully from your cart");
             return response;
         } catch (error) {
-            console.log(error, "error remove product from cart");
             toast.error("Something went wrong");
         }
     }
@@ -30,12 +28,10 @@ export default function CartTable() {
     async function handleUpdateCart(productId: string, count: number) {
         try {
             const response = await updateCart(productId, count);
-            console.log(response, "update product from cart")
             await fetchCart();
             toast.success("Cart updated successfully");
             return response;
         } catch (error) {
-            console.log(error, "error updating cart");
             toast.error("Something went wrong");
         }
     }

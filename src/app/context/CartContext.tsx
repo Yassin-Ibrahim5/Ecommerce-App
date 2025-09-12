@@ -33,7 +33,6 @@ export default function CartContextProvider({children}: { children: React.ReactN
         const response = await getUserCart();
         setCartDetails(response?.data);
         localStorage.setItem("userId", response?.data?.cartOwner);
-        console.log(response?.data, "cart");
         setLoading(false);
         return response?.data;
     }

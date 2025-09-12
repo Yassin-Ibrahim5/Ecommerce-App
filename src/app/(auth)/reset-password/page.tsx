@@ -24,7 +24,6 @@ export default function ResetPasswordPage() {
         setLoading(true);
         try {
             const response = await axios.put(`https://ecommerce.routemisr.com/api/v1/auth/resetPassword`, values);
-            console.log(response);
             if (response?.statusText === "OK") {
                 setErrorMessage(null);
                 toast.success("Password Reset Successfully! Please login with your new password.");
@@ -34,7 +33,6 @@ export default function ResetPasswordPage() {
             }
         } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
-                console.log(error.response?.data);
                 setErrorMessage(error.response?.data.message);
             }
         } finally {

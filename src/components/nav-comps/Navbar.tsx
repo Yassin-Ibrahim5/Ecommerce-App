@@ -2,7 +2,7 @@
 import {NavigationMenu, NavigationMenuItem, NavigationMenuList,} from "@/components/ui/navigation-menu";
 
 import React from "react";
-import {Heart, LogIn, LogOut, ShoppingCart, User, UserPlus} from "lucide-react";
+import {Heart, LogIn, LogOut, ShoppingCart, User, UserCog, UserPen, UserPlus} from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -48,8 +48,8 @@ export default function Navbar() {
                 <NavigationMenuList className={`font-bold gap-4`}>
                     <button>
                         {wishlist?.count ?
-                                <Badge className={`absolute -top-4`}>{wishlist.count}</Badge> :
-                                null}
+                            <Badge className={`absolute -top-4`}>{wishlist.count}</Badge> :
+                            null}
                         <Link href="/wishlist"><Heart
                             className="hover:text-red-600 transition-all duration-200"/></Link>
                     </button>
@@ -66,12 +66,27 @@ export default function Navbar() {
                         <DropdownMenuContent>
                             <DropdownMenuLabel className={`font-bold`}>Account</DropdownMenuLabel>
                             <DropdownMenuSeparator/>
-                            {session.data ? <DropdownMenuItem>
-                                    <Link href="/" className="font-semibold flex justify-between items-center gap-1"
-                                          onClick={() => signOut({callbackUrl: "/login"})}>
-                                        <LogOut/>Log Out
-                                    </Link>
-                                </DropdownMenuItem> :
+                            {session.data ?
+                                <>
+                                    <DropdownMenuItem>
+                                        <Link href="/change-password"
+                                              className="font-semibold flex justify-between items-center gap-1">
+                                            <UserPen/>Change Password
+                                        </Link>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <Link href="/change-data"
+                                              className="font-semibold flex justify-between items-center gap-1">
+                                            <UserCog/>Change User Data
+                                        </Link>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <Link href="/" className="font-semibold flex justify-between items-center gap-1"
+                                              onClick={() => signOut({callbackUrl: "/login"})}>
+                                            <LogOut/>Log Out
+                                        </Link>
+                                    </DropdownMenuItem>
+                                </> :
                                 <>
                                     <DropdownMenuItem>
                                         <Link href="/register"

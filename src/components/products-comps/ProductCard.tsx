@@ -24,7 +24,6 @@ export default function ProductCard({product}: { product: Product }) {
             await fetchCart();
             return response;
         } catch (error) {
-            console.log(error, "error onclick add to product");
             toast.error("Something went wrong");
         }
     }
@@ -36,7 +35,6 @@ export default function ProductCard({product}: { product: Product }) {
             await fetchWishlist()
             return response;
         } catch (error) {
-            console.log(error, "error onclick add to product");
             toast.error("Something went wrong");
         }
     }
@@ -48,7 +46,6 @@ export default function ProductCard({product}: { product: Product }) {
             await fetchWishlist()
             return response;
         } catch (error) {
-            console.log(error, "error onclick add to product");
             toast.error("Something went wrong");
         }
     }

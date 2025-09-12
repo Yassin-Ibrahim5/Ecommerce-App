@@ -26,7 +26,6 @@ export default function RegisterPage() {
         setLoading(true);
         try {
             const response = await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", values);
-            console.log(response);
             if (response?.data.message === "success") {
                 setErrorMessage(null);
                 toast.success("Registration Successful! Please login to continue.");
@@ -34,7 +33,6 @@ export default function RegisterPage() {
             }
         } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
-                console.log(error.response?.data);
                 setErrorMessage(error.response?.data.errors?.msg ? error.response?.data.errors?.msg : error.response?.data.message);
             }
         } finally {

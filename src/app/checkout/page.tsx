@@ -35,7 +35,6 @@ export default function CheckoutPage() {
         if (paymentMethod === "cash") {
             try {
                 const response = await makeCashOrder(cartDetails?.cartId as string, {shippingAddress: values});
-                console.log(response);
                 if (response?.data.status === "success") {
                     setErrorMessage(null);
                     setCartDetails(null);
@@ -45,7 +44,6 @@ export default function CheckoutPage() {
                 }
             } catch (error: unknown) {
                 if (axios.isAxiosError(error)) {
-                    console.log(error.message);
                     toast.error("Something went wrong");
                     setErrorMessage(error.message);
                 }
@@ -55,7 +53,6 @@ export default function CheckoutPage() {
         } else if (paymentMethod === 'card') {
             try {
                 const response = await makeOnlinePayment(cartDetails?.cartId as string, values);
-                console.log(response);
                 if (response?.data.status === "success") {
                     setErrorMessage(null);
                     window.location.href = response?.data.session?.url;
@@ -63,7 +60,6 @@ export default function CheckoutPage() {
                 }
             } catch (error: unknown) {
                 if (axios.isAxiosError(error)) {
-                    console.log(error.message);
                     toast.error("Something went wrong");
                     setErrorMessage(error.message);
                 }

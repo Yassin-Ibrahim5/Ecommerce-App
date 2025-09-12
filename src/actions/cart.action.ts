@@ -67,7 +67,6 @@ async function removeFromCart(productId: string) {
                 token: token as string
             }
         });
-        console.log(response, "remove from cart");
         return {
             data: response?.data,
             status: response?.status,
@@ -99,7 +98,6 @@ async function updateCart(productId: string, count: number) {
                 token: token as string
             }
         });
-        console.log(response, "update cart");
         return {
             data: response?.data,
             status: response?.status,

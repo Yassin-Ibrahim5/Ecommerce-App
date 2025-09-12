@@ -3,7 +3,6 @@ import {Category} from "@/app/types/category.model";
 import CategoryCard from "@/components/categories-comps/CategoryCard";
 
 function CategoriesGridSystem({categories}: { categories: { data: Category[]}}) {
-    console.log(categories, "categories from grid");
     return (
         <div className="container mx-auto p-10">
             <h2 className="text-4xl text-center tracking-tighter font-bold">Categories</h2>

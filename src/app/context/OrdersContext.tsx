@@ -26,12 +26,10 @@ export default function OrdersContextProvider({children}: { children: React.Reac
         if (userId) {
             const response = await getUserOrders(userId);
             setOrders(response?.data);
-            console.log(response, "orders");
             setLoading(false);
             return response?.data;
         } else {
             setLoading(true);
-            console.log("No user ID found");
         }
     }
 

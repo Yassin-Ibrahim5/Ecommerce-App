@@ -28,7 +28,6 @@ export default function WishlistContextProvider({children}: { children: React.Re
         }
         const response = await getWishlist();
         setWishlist(response?.data);
-        console.log(response?.data, "wishlist");
         setLoading(false);
         return response?.data;
     }

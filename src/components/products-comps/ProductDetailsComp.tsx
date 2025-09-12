@@ -21,7 +21,6 @@ export default function ProductDetailsComp({productDetails}: { productDetails: P
             await fetchCart();
             return response;
         } catch (error) {
-            console.log(error, "error onclick add to product");
             toast.error("Something went wrong");
         }
     }

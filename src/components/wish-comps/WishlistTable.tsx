@@ -23,7 +23,6 @@ export default function WishlistTable() {
             await fetchCart();
             return response;
         } catch (error) {
-            console.log(error, "error onclick add to product");
             toast.error("Something went wrong");
         }
     }
@@ -35,7 +34,6 @@ export default function WishlistTable() {
             await fetchWishlist()
             return response;
         } catch (error) {
-            console.log(error, "error onclick add to product");
             toast.error("Something went wrong");
         }
     }

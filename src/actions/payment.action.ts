@@ -16,7 +16,6 @@ async function makeCashOrder(cartId: string, shippingAddress: { shippingAddress:
                 token: token as string
             }
         });
-        console.log(response.data, "make cash order");
         return {
             data: response?.data,
             status: response?.status,
@@ -52,7 +51,6 @@ async function makeOnlinePayment(cartId: string, shippingAddress: ShippingAddres
                 token: token as string
             }
         });
-        console.log(response.data, "make online order");
         return {
             data: response?.data,
             status: response?.status,

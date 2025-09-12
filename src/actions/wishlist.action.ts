@@ -67,7 +67,6 @@ async function removeFromWishlist(productId: string) {
                 token: token as string
             }
         });
-        console.log(response, "remove from wishlist");
         return {
             data: response?.data,
             status: response?.status,

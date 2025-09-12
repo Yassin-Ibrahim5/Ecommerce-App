@@ -3,7 +3,6 @@ import {Brand} from "@/app/types/brands.model";
 import BrandCard from "@/components/brands-comps/BrandCard";
 
 function BrandsGridSystem({brands} : {brands: { data: Brand[]}}) {
-    console.log(brands, "brands from grid");
     return (
         <div className={`container mx-auto p-10`}>
             <h2 className="text-4xl text-center tracking-tighter font-bold">Brands</h2>

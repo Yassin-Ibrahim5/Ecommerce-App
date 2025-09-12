@@ -8,7 +8,6 @@ import LoadingPage from "@/app/allorders/loading";
 
 export default function OrdersTable() {
     const {orders, loading} = useOrders();
-    console.log(orders, "orders");
     return (
         <>
             {loading ? <LoadingPage/> :

@@ -4,19 +4,13 @@ import CatSliderComp from "@/components/sliders-comps/CatSliderComp";
 import React from "react";
 import {getProducts} from "@/actions/products.action";
 import ProductsGridSystem from "@/components/products-comps/ProductsGridSystem";
-import {getServerSession} from "next-auth";
-import {OPTIONS} from "@/app/api/auth/[...nextauth]/route";
-import {getWishlist} from "@/actions/wishlist.action";
+
 
 export default async function Home() {
-    const session = await getServerSession(OPTIONS);
-    console.log(session, "session data");
     const response = await getCategories();
     const categories = Array.isArray(response?.data?.data) ? response.data.data : [];
-
     const {data: products} = await getProducts();
-    const wish = await getWishlist();
-    console.log(wish, "wishlist");
+
     return (
         <>
             <MainSlider/>

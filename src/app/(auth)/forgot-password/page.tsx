@@ -19,21 +19,17 @@ export default function ForgotPassword() {
 
     async function onSubmit(values: Inputs) {
         setLoading(true);
-        console.log(values, "Reset email");
+
         try {
             const response = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/forgotPasswords`, values);
-            console.log(response);
             if (response?.data.statusMsg === "success") {
                 router.push("/forgot-password/verify-code");
             } else {
                 setErrorMessage(response?.data.message);
             }
-            console.log(
-                response?.data.statusMsg === "success" ? "Reset email sent successfully" : "Reset email failed"
-            )
+
         } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
-                console.log(error.response?.data);
                 setErrorMessage(error.response?.data.errors?.msg ? error.response?.data.errors?.msg : error.response?.data.message);
             }
         } finally {

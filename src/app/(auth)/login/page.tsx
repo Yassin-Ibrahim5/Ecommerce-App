@@ -22,14 +22,12 @@ export default function LoginPage() {
 
     async function onSubmit(values: Inputs) {
         setLoading(true);
-        console.log(values, "Login Info");
         try {
             const response = await signIn("credentials", {
                 email: values.email,
                 password: values.password,
                 redirect: false,
             });
-            console.log(response);
             if (response?.ok) {
                 setErrorMessage(null);
                 toast.success("Login Successful!");
@@ -38,7 +36,6 @@ export default function LoginPage() {
                 setErrorMessage("Invalid email or password");
             }
         } catch (error: unknown) {
-            console.error(error);
             setErrorMessage(error);
         } finally {
             setLoading(false);
