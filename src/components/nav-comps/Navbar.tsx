@@ -1,7 +1,7 @@
 "use client";
 import {NavigationMenu, NavigationMenuItem, NavigationMenuList,} from "@/components/ui/navigation-menu";
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Heart, LogIn, LogOut, ShoppingCart, User, UserCog, UserPen, UserPlus} from "lucide-react";
 import {
     DropdownMenu,
@@ -22,28 +22,49 @@ export default function Navbar() {
 
     const {cartDetails} = useCart();
     const {wishlist} = useWishlist();
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 40) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    },[]);
 
     return (
-        <div className={`flex justify-between items-center py-4 px-10 sticky top-0 z-50 bg-white shadow-md`}>
+        <div className={`flex justify-between items-center py-1 px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
             <NavigationMenu className={`text-md p-5 flex justify-between max-w-7xl items-center mx-auto`}>
-                <NavigationMenuList className={`text-4xl font-semibold tracking-tighter`}>
+                <NavigationMenuList className={`font-poppins gap-12`}>
                     <NavigationMenuItem>
-                        <Link href={`/`}>SnapCart</Link>
+                        <Link href={`/`} className={`uppercase text-3xl tracking-normal font-poppins`}><span
+                            className={`font-bold`}>Snap</span><span className={`font-normal`}>Cart</span></Link>
                     </NavigationMenuItem>
-                </NavigationMenuList>
-                <NavigationMenuList className={`font-bold gap-5`}>
-                    <NavigationMenuItem>
-                        <Link href="/" className="font-semibold">Home</Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <Link href="/products" className="font-semibold">Products</Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <Link href="/categories" className="font-semibold">Categories</Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <Link href="/brands" className="font-semibold">Brands</Link>
-                    </NavigationMenuItem>
+                    <div className={`flex items-center gap-6`}>
+                        <NavigationMenuItem>
+                            <Link href="/"
+                                  className="hover:text-[#717fe0] transition-all duration-400 font-poppins">Home</Link>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <Link href="/products"
+                                  className="hover:text-[#717fe0] transition-all duration-400 font-poppins">Products</Link>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <Link href="/categories"
+                                  className="hover:text-[#717fe0] transition-all duration-400 font-poppins">Categories</Link>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <Link href="/brands"
+                                  className="hover:text-[#717fe0] transition-all duration-400 font-poppins">Brands</Link>
+                        </NavigationMenuItem>
+                    </div>
                 </NavigationMenuList>
                 <NavigationMenuList className={`font-bold gap-4`}>
                     <button>
@@ -51,18 +72,19 @@ export default function Navbar() {
                             <Badge className={`absolute -top-4`}>{wishlist.count}</Badge> :
                             null}
                         <Link href="/wishlist"><Heart
-                            className="hover:text-red-600 transition-all duration-200"/></Link>
+                            className="hover:text-[#717fe0] transition-all duration-200"/></Link>
                     </button>
                     <button>
                         {cartDetails?.numOfCartItems ?
                             <Badge className={`absolute -top-4`}>{cartDetails?.numOfCartItems}</Badge> :
                             null}
                         <Link href="/cart"><ShoppingCart
-                            className="hover:text-blue-600 transition-all duration-200"/></Link>
+                            className="hover:text-[#717fe0] transition-all duration-200"/></Link>
                     </button>
                     <DropdownMenu>
-                        <DropdownMenuTrigger><User className={`focus:border-0 cursor-pointer`}
-                                                   size={27}/></DropdownMenuTrigger>
+                        <DropdownMenuTrigger><User
+                            className={`focus:border-0 cursor-pointer hover:text-[#717fe0] transition-all duration-200`}
+                            size={27}/></DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuLabel className={`font-bold`}>Account</DropdownMenuLabel>
                             <DropdownMenuSeparator/>
@@ -70,18 +92,19 @@ export default function Navbar() {
                                 <>
                                     <DropdownMenuItem>
                                         <Link href="/change-password"
-                                              className="font-semibold flex justify-between items-center gap-1">
+                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <UserPen/>Change Password
                                         </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem>
                                         <Link href="/change-data"
-                                              className="font-semibold flex justify-between items-center gap-1">
+                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <UserCog/>Change User Data
                                         </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem>
-                                        <Link href="/" className="font-semibold flex justify-between items-center gap-1"
+                                        <Link href="/"
+                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200"
                                               onClick={() => signOut({callbackUrl: "/login"})}>
                                             <LogOut/>Log Out
                                         </Link>
@@ -90,13 +113,13 @@ export default function Navbar() {
                                 <>
                                     <DropdownMenuItem>
                                         <Link href="/register"
-                                              className="font-semibold flex justify-between items-center gap-1">
+                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <UserPlus/>Register
                                         </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem>
                                         <Link href="/login"
-                                              className="font-semibold flex justify-between items-center gap-1">
+                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <LogIn/>Log In
                                         </Link>
                                     </DropdownMenuItem>
