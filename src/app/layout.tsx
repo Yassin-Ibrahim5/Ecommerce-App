@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/nav-comps/Navbar";
 import React from "react";
 import {AuthProvider} from "@/app/context/AuthProvider";
+import {FontProviders} from "@/app/providers";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -31,10 +32,12 @@ export default function RootLayout({children}: Readonly<{
         <body
             suppressHydrationWarning
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <AuthProvider>
-            <Navbar/>
-            {children}
-        </AuthProvider>
+        <FontProviders>
+            <AuthProvider>
+                <Navbar/>
+                {children}
+            </AuthProvider>
+        </FontProviders>
         </body>
         </html>
     );

@@ -42,27 +42,27 @@ export default function Navbar() {
     return (
         <div className={`flex justify-between items-center py-1 px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
             <NavigationMenu className={`text-md p-5 flex justify-between max-w-7xl items-center mx-auto`}>
-                <NavigationMenuList className={`font-poppins gap-12`}>
+                <NavigationMenuList className={`font-[Poppins] gap-12`}>
                     <NavigationMenuItem>
-                        <Link href={`/`} className={`uppercase text-3xl tracking-normal font-poppins`}><span
+                        <Link href={`/`} className={`uppercase text-3xl tracking-normal font-[Poppins]`}><span
                             className={`font-bold`}>Snap</span><span className={`font-normal`}>Cart</span></Link>
                     </NavigationMenuItem>
                     <div className={`flex items-center gap-6`}>
                         <NavigationMenuItem>
                             <Link href="/"
-                                  className="hover:text-[#717fe0] transition-all duration-400 font-poppins">Home</Link>
+                                  className="hover:text-[#717fe0] transition-all duration-400">Home</Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/products"
-                                  className="hover:text-[#717fe0] transition-all duration-400 font-poppins">Products</Link>
+                                  className="hover:text-[#717fe0] transition-all duration-400">Shop</Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/categories"
-                                  className="hover:text-[#717fe0] transition-all duration-400 font-poppins">Categories</Link>
+                                  className="hover:text-[#717fe0] transition-all duration-400">Categories</Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/brands"
-                                  className="hover:text-[#717fe0] transition-all duration-400 font-poppins">Brands</Link>
+                                  className="hover:text-[#717fe0] transition-all duration-400">Brands</Link>
                         </NavigationMenuItem>
                     </div>
                 </NavigationMenuList>
