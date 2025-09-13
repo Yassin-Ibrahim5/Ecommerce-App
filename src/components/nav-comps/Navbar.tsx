@@ -78,14 +78,14 @@ export default function Navbar() {
                             <Badge className={`absolute -top-4 bg-[#717FE0] text-white`}>{cartDetails?.numOfCartItems}</Badge> :
                             null}
                         <Link href="/cart"><ShoppingCart
-                            className="hover:text-[#717fe0] text-[#222] fill-[#222] hover:fill-[#717FE0] transition-all duration-200"/></Link>
+                            className={`hover:text-[#717fe0] text-[#222] fill-[#222] hover:fill-[#717FE0] transition-all duration-400 ${isActive('/cart') ? 'text-[#717FE0] fill-[#717FE0]' : ''}`}/></Link>
                     </button>
                     <button>
                         {wishlist?.count ?
                             <Badge className={`absolute -top-4 bg-[#717FE0] text-white`}>{wishlist.count}</Badge> :
                             null}
                         <Link href="/wishlist"><Heart
-                            className="hover:text-[#717fe0] transition-all duration-200"/></Link>
+                            className={`hover:text-[#717fe0] transition-all duration-400 ${isActive('/wishlist') ? 'text-[#717Fe0]' : ''}`}/></Link>
                     </button>
                     <DropdownMenu>
                         <DropdownMenuTrigger><User
