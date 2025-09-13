@@ -69,14 +69,14 @@ export default function Navbar() {
                 <NavigationMenuList className={`font-bold gap-4`}>
                     <button>
                         {cartDetails?.numOfCartItems ?
-                            <Badge className={`absolute -top-4`}>{cartDetails?.numOfCartItems}</Badge> :
+                            <Badge className={`absolute -top-4 bg-[#717FE0] text-white`}>{cartDetails?.numOfCartItems}</Badge> :
                             null}
                         <Link href="/cart"><ShoppingCart
                             className="hover:text-[#717fe0] text-[#222] fill-[#222] hover:fill-[#717FE0] transition-all duration-200"/></Link>
                     </button>
                     <button>
                         {wishlist?.count ?
-                            <Badge className={`absolute -top-4`}>{wishlist.count}</Badge> :
+                            <Badge className={`absolute -top-4 bg-[#717FE0] text-white`}>{wishlist.count}</Badge> :
                             null}
                         <Link href="/wishlist"><Heart
                             className="hover:text-[#717fe0] transition-all duration-200"/></Link>
