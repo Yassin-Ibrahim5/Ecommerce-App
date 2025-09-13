@@ -76,7 +76,6 @@ export default function ProductCard({product}: { product: Product }) {
                             <ZoomIn/>
                         </Link>
                     </button>
-
                 </div>
                 <CardHeader>
                     <CardTitle>{product.title.split(" ").slice(0, 2).join(" ")}</CardTitle>

@@ -1,6 +1,5 @@
 "use client";
 import {NavigationMenu, NavigationMenuItem, NavigationMenuList,} from "@/components/ui/navigation-menu";
-
 import React, {useEffect, useState} from "react";
 import {Heart, LogIn, LogOut, ShoppingCart, User, UserCog, UserPen, UserPlus} from "lucide-react";
 import {
@@ -37,10 +36,11 @@ export default function Navbar() {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    },[]);
+    }, []);
 
     return (
-        <div className={`flex justify-between items-center py-1 px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
+        <div
+            className={`flex justify-between items-center py-1 px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
             <NavigationMenu className={`text-md p-5 flex justify-between max-w-7xl items-center mx-auto`}>
                 <NavigationMenuList className={`font-[Poppins] gap-12`}>
                     <NavigationMenuItem>
