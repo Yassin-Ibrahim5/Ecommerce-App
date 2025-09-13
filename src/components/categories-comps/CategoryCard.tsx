@@ -18,7 +18,7 @@ export default function CategoryCard({category}: { category: Category }) {
                     </div>
                 </CardContent>
                 <CardHeader>
-                    <CardTitle className={`text-2xl font-semibold`}>{category.name}</CardTitle>
+                    <CardTitle className={`text-2xl font-semibold font-[Poppins]`}>{category.name}</CardTitle>
                 </CardHeader>
             </Card>
         </Link>

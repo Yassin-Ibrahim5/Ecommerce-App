@@ -18,7 +18,7 @@ function BrandCard({brand}: { brand: Brand }) {
                     </div>
                 </CardContent>
                 <CardHeader>
-                    <CardTitle className={`text-2xl font-semibold text-center`}>{brand.name}</CardTitle>
+                    <CardTitle className={`text-2xl font-semibold text-center font-[Poppins]`}>{brand.name}</CardTitle>
                 </CardHeader>
             </Card>
         </Link>
