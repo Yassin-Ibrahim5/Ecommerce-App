@@ -15,6 +15,7 @@ import {signOut, useSession} from "next-auth/react";
 import {Badge} from "@/components/ui/badge";
 import {useCart} from "@/app/context/CartContext";
 import {useWishlist} from "@/app/context/WishlistContext";
+import {usePathname} from "next/navigation";
 
 export default function Navbar() {
     const session = useSession();
@@ -22,6 +23,7 @@ export default function Navbar() {
     const {cartDetails} = useCart();
     const {wishlist} = useWishlist();
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,6 +40,10 @@ export default function Navbar() {
         };
     }, []);
 
+    function isActive(path: string) {
+        if (path === '/') return pathname === path;
+        return pathname.startsWith(path);
+    }
     return (
         <div
             className={`flex justify-between items-center py-1 px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
@@ -50,19 +56,19 @@ export default function Navbar() {
                     <div className={`flex items-center gap-6`}>
                         <NavigationMenuItem>
                             <Link href="/"
-                                  className="hover:text-[#717fe0] transition-all duration-400">Home</Link>
+                                  className={`hover:text-[#717fe0] transition-all duration-400 ${isActive('/') ? 'text-[#717Fe0]' : ''}`}>Home</Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/products"
-                                  className="hover:text-[#717fe0] transition-all duration-400">Shop</Link>
+                                  className={`hover:text-[#717fe0] transition-all duration-400 ${isActive('/products') ? 'text-[#717Fe0]' : ''}`}>Shop</Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/categories"
-                                  className="hover:text-[#717fe0] transition-all duration-400">Categories</Link>
+                                  className={`hover:text-[#717fe0] transition-all duration-400 ${isActive('/categories') ? 'text-[#717Fe0]' : ''}`}>Categories</Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/brands"
-                                  className="hover:text-[#717fe0] transition-all duration-400">Brands</Link>
+                                  className={`hover:text-[#717fe0] transition-all duration-400 ${isActive('/brands') ? 'text-[#717Fe0]' : ''}`}>Brands</Link>
                         </NavigationMenuItem>
                     </div>
                 </NavigationMenuList>

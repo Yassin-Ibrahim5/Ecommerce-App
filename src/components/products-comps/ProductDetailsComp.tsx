@@ -32,6 +32,7 @@ export default function ProductDetailsComp({productDetails}: { productDetails: P
                     slidesPerView={1}
                     spaceBetween={3}
                     navigation={true}
+                    loop={true}
                     pagination={{
                         clickable: true,
                     }}
