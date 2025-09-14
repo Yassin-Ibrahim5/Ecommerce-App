@@ -1,10 +1,9 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
+import {Geist, Geist_Mono, Montserrat, Playfair_Display, Poppins} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/nav-comps/Navbar";
 import React from "react";
 import {AuthProvider} from "@/app/context/AuthProvider";
-import {FontProviders} from "@/app/providers";
 import Footer from "@/components/footer-comps/Footer";
 
 const geistSans = Geist({
@@ -15,6 +14,22 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
+});
+
+const poppins = Poppins({
+    subsets: ['latin'],
+    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+    variable: '--font-poppins',
+});
+
+const playfair = Playfair_Display({
+    subsets: ['latin'],
+    variable: '--font-playfair-display',
+});
+
+const montserrat = Montserrat({
+    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+    variable: '--font-montserrat',
 });
 
 export const metadata: Metadata = {
@@ -32,14 +47,13 @@ export default function RootLayout({children}: Readonly<{
         <html lang="en">
         <body
             suppressHydrationWarning
-            className={`${geistSans.variable} ${geistMono.variable} text-[#222] antialiased`}>
-        <FontProviders>
+            className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${playfair.variable} ${montserrat.variable} text-[#222] antialiased`}>
+
             <AuthProvider>
                 <Navbar/>
                 {children}
                 <Footer/>
             </AuthProvider>
-        </FontProviders>
         </body>
         </html>
     );
