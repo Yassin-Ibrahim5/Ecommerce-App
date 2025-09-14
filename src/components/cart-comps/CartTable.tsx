@@ -41,6 +41,7 @@ export default function CartTable() {
             {loading ? <LoadingPage/> :
                 (cartDetails?.numOfCartItems !== 0 ?
                         (<div className={`w-3/4 mx-auto`}>
+                            <h2 className="text-4xl mb-5 text-start font-bold uppercase font-[Poppins] text-[#222222]">Cart</h2>
                             <Table className={`w-full border-2`}>
                                 <TableHeader>
                                     <TableRow>
@@ -61,7 +62,7 @@ export default function CartTable() {
                                                 <div className="flex items-center justify-center gap-4">
                                                     <div className="relative">
                                                         <Badge onClick={() => {
-                                                            handleRemoveFromCart(product.product._id);
+                                                            handleRemoveFromCart(product.product._id).then();
                                                         }}
                                                                className="absolute top-[-10] left-[-10px] cursor-pointer hover:bg-[#717FE0] transition-all duration-300">X</Badge>
                                                         <Image src={product.product.imageCover}

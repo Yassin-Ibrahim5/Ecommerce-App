@@ -96,7 +96,7 @@ export default function ProductCard({product}: { product: Product }) {
                 {/*    </CardFooter>*/}
                 {/*</Card>*/}
             </>
-            <Card className="flex relative gap-5">
+            <Card className="flex relative border-1 rounded-none">
                 <CardContent>
                     <div className="overflow-hidden block relative group w-full h-[300px]">
                         <Image src={product.imageCover} alt={product.title} fill

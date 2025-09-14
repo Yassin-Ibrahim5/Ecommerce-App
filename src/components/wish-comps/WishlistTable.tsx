@@ -44,6 +44,7 @@ export default function WishlistTable() {
             {loading ? <LoadingPage/> :
                 (wishlist?.count !== 0 ?
                         (<div className={`w-3/4 mx-auto`}>
+                            <h2 className="text-4xl mb-5 text-start font-bold uppercase font-[Poppins] text-[#222222]">Wishlist</h2>
                             <Table className={`w-full border-2`}>
                                 <TableHeader>
                                     <TableRow>
