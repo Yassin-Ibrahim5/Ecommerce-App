@@ -1,9 +1,5 @@
 "use client"
 import React from 'react';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import Image from "next/image";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious,} from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
@@ -146,9 +142,9 @@ export default function MainSlider() {
                         </CarouselItem>
                     </CarouselContent>
                     <CarouselPrevious
-                        className={`absolute opacity-0 group-hover:opacity-100 transition-all duration-400 hover:bg-transparent border-0 hover:border-0 hover:text-[#717FE0] left-0 bg-transparent text-[#0000004d] w-[80px] h-[80px] [&_svg]:!size-18 flex items-center justify-center`}/>
+                        className={`absolute opacity-0 cursor-pointer group-hover:opacity-100 transition-all duration-400 hover:bg-transparent border-0 hover:border-0 hover:text-[#717FE0] left-0 bg-transparent text-[#0000004d] w-[80px] h-[80px] [&_svg]:!size-18 flex items-center justify-center`}/>
                     <CarouselNext
-                        className={`absolute opacity-0 group-hover:opacity-100 transition-all duration-400 hover:bg-transparent border-0 hover:border-0 hover:text-[#717FE0] right-0 bg-transparent text-[#0000004d] w-[80px] h-[80px] [&_svg]:!size-18 flex items-center justify-center`}/>
+                        className={`absolute opacity-0 cursor-pointer group-hover:opacity-100 transition-all duration-400 hover:bg-transparent border-0 hover:border-0 hover:text-[#717FE0] right-0 bg-transparent text-[#0000004d] w-[80px] h-[80px] [&_svg]:!size-18 flex items-center justify-center`}/>
                 </Carousel>
             </div>
         </>
