@@ -58,24 +58,24 @@ export default function ChangePassword() {
             <div className="w-1/2 mx-auto">
                 <h2 className="text-3xl mb-5 text-start font-bold uppercase font-[Poppins] text-[#222222]">Change
                     Password</h2>
-                {errorMessage && <p className="text-red-700 text-center text-lg">{errorMessage}</p>}
+                {errorMessage && <p className="text-red-500 text-lg">{errorMessage}</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="relative currentPasswordInput">
                         <ShowHidePassword {...register("currentPassword", {required: "Current Password is Required"})}
                                           placeholder="Current Password"/>
                     </div>
-                    {errors.currentPassword && <p className="text-red-700">{errors.currentPassword.message}</p>}
+                    {errors.currentPassword && <p className="text-red-500">{errors.currentPassword.message}</p>}
 
                     <div className="relative newPasswordInput">
                         <ShowHidePassword {...register("password", {required: "New Password is Required"})}
                                           placeholder={"New Password"}/>
                     </div>
-                    {errors.password && <p className="text-red-700">{errors.password.message}</p>}
+                    {errors.password && <p className="text-red-500">{errors.password.message}</p>}
                     <div className="relative rePasswordInput">
                         <ShowHidePassword {...register("rePassword", {required: "RePassword is Required"})}
                                           placeholder={"RePassword"}/>
                     </div>
-                    {errors.rePassword && <p className="text-red-700">{errors.rePassword.message}</p>}
+                    {errors.rePassword && <p className="text-red-500">{errors.rePassword.message}</p>}
 
                     <div className="flex items-center gap-5">
                         <Button type="submit" disabled={loading}
