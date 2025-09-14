@@ -96,9 +96,9 @@ export default function CartTable() {
                                                     <div onClick={() => {
                                                         handleUpdateCart(product.product._id, product.count + 1).then();
                                                     }}
-                                                        className={`w-[45px] h-full cursor-pointer flex items-center justify-center transition-all duration-400 hover:bg-[#717FE0] text-[#555] group`}>
+                                                         className={`w-[45px] h-full cursor-pointer flex items-center justify-center transition-all duration-400 hover:bg-[#717FE0] text-[#555] group`}>
                                                         <button
-                                                                className={`group-hover:text-white cursor-pointer transition-all duration-400`}>+
+                                                            className={`group-hover:text-white cursor-pointer transition-all duration-400`}>+
                                                         </button>
                                                     </div>
                                                 </div>
@@ -123,17 +123,19 @@ export default function CartTable() {
                                 </TableBody>
                             </Table>
                         </div>) :
-                        <div className={`w-1/2 mx-auto flex flex-col items-center justify-center gap-5 my-10`}>
-                            <div className={`flex items-center justify-center rounded-full bg-slate-100 p-10`}>
-                                <ShoppingBag className={`text-6xl text-black`} size={62}/>
+                        <div className={`w-1/2 mx-auto flex flex-col items-center justify-center gap-5 font-[Poppins]`}>
+                            <div
+                                className={`flex items-center justify-center rounded-full bg-slate-100 p-10 group hover:bg-[#717FE0] transition-all duration-400`}>
+                                <ShoppingBag
+                                    className={`text-6xl text-black group-hover:text-white transition-all duration-400`}
+                                    size={62}/>
                             </div>
                             <h2 className={`text-3xl font-bold`}>Your cart is empty!</h2>
                             <p className={`text-md w-[75%] text-center text-slate-500`}>Found something you like? Tap on
                                 the
-                                cart icon next
-                                to the item to add it to your cart!</p>
+                                add to cart button on the item to add it to your cart!</p>
                             <Link href={`/`}
-                                  className={`px-8 py-4 hover:bg-black hover:text-white cursor-pointer rounded-lg border-1 transition-all duration-300 border-black`}>
+                                  className={`px-8 py-4 cursor-pointer my-5 bg-black rounded-[22px] hover:bg-[#717FE0] border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
                                 Continue Shopping
                             </Link>
                         </div>
