@@ -79,7 +79,7 @@ export default function ChangePassword() {
 
                     <div className="flex items-center gap-5">
                         <Button type="submit" disabled={loading}
-                                className={`px-10 py-5 cursor-pointer bg-black rounded-[22px] hover:bg-[#717FE0] hover:text-white border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
+                                className={`px-10 py-5 cursor-pointer my-5 bg-black rounded-[22px] hover:bg-[#717FE0] hover:text-white border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
                             {loading ? <Loader className={`animate-spin`} size={20}/> : "Change Password"}
                         </Button>
                     </div>
