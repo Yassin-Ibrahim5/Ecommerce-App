@@ -80,12 +80,12 @@ export default function CartTable() {
                                             <TableCell className="p-6 text-center text-[#555] font-[Poppins]">
                                                 <div
                                                     className={`w-[135px] h-[45px] border-1 border-[#e6e6e6] rounded-[3px] overflow-hidden flex mx-auto`}>
-                                                    <div
-                                                        className={`w-[45px] h-full cursor-pointer flex items-center justify-center transition-all duration-400 hover:bg-[#717FE0] text-[#555] group`}>
-                                                        <button onClick={() => {
-                                                            handleUpdateCart(product.product._id, product.count - 1).then()
-                                                        }}
-                                                                className={`group-hover:text-white transition-all duration-400`}>-
+                                                    <div onClick={() => {
+                                                        handleUpdateCart(product.product._id, product.count - 1).then();
+                                                    }}
+                                                         className={`w-[45px] h-full cursor-pointer flex items-center justify-center transition-all duration-400 hover:bg-[#717FE0] text-[#555] group`}>
+                                                        <button
+                                                            className={`group-hover:text-white cursor-pointer transition-all duration-400`}>-
                                                         </button>
                                                     </div>
 
@@ -93,12 +93,12 @@ export default function CartTable() {
                                                         className={`w-[45px] h-full flex items-center justify-center text-[#666] bg-[#F6F6F6]`}>
                                                         <span>{product.count}</span>
                                                     </div>
-                                                    <div
+                                                    <div onClick={() => {
+                                                        handleUpdateCart(product.product._id, product.count + 1).then();
+                                                    }}
                                                         className={`w-[45px] h-full cursor-pointer flex items-center justify-center transition-all duration-400 hover:bg-[#717FE0] text-[#555] group`}>
-                                                        <button onClick={() => {
-                                                            handleUpdateCart(product.product._id, product.count + 1).then()
-                                                        }}
-                                                                className={`group-hover:text-white transition-all duration-400`}>+
+                                                        <button
+                                                                className={`group-hover:text-white cursor-pointer transition-all duration-400`}>+
                                                         </button>
                                                     </div>
                                                 </div>

@@ -5,6 +5,7 @@ import Navbar from "@/components/nav-comps/Navbar";
 import React from "react";
 import {AuthProvider} from "@/app/context/AuthProvider";
 import {FontProviders} from "@/app/providers";
+import Footer from "@/components/footer-comps/Footer";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({children}: Readonly<{
             <AuthProvider>
                 <Navbar/>
                 {children}
+                <Footer/>
             </AuthProvider>
         </FontProviders>
         </body>

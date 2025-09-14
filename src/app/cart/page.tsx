@@ -4,7 +4,7 @@ import React from "react";
 
 export default function CartPage() {
 
-    return <div className={`mt-25`}>
+    return <div className={`my-25`}>
         <CartTable/>
     </div>;
 }
