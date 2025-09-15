@@ -40,19 +40,19 @@ function Footer() {
                         <h4 className={`font-[Montserrat] leading-[1.6] uppercase text-[15px] font-bold`}>Help</h4>
                         <ul className={`list-none mt-[20px] text-[#999]`}>
                             <li className={`pb-[10px]`}>
-                                <Link href={`/allorders`}
+                                <Link href={`/orders`}
                                       className={`text-[13px] font-[Poppins] hover:text-[#717FE0] transition-all duration-400`}>
                                     Track Order
                                 </Link>
                             </li>
                             <li className={`pb-[10px]`}>
-                                <Link href={`/allorders`}
+                                <Link href={`/orders`}
                                       className={`text-[13px] font-[Poppins] hover:text-[#717FE0] transition-all duration-400`}>
                                     Returns
                                 </Link>
                             </li>
                             <li className={`pb-[10px]`}>
-                                <Link href={`/allorders`}
+                                <Link href={`/orders`}
                                       className={`text-[13px] font-[Poppins] hover:text-[#717FE0] transition-all duration-400`}>
                                     Shipping
                                 </Link>
