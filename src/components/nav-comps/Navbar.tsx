@@ -1,7 +1,7 @@
 "use client";
 import {NavigationMenu, NavigationMenuItem, NavigationMenuList,} from "@/components/ui/navigation-menu";
 import React, {useEffect, useState} from "react";
-import {Heart, LogIn, LogOut, ShoppingCart, User, UserCog, UserPen, UserPlus} from "lucide-react";
+import {ClipboardList, Heart, LogIn, LogOut, ShoppingCart, User, UserCog, UserPen, UserPlus} from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -97,6 +97,12 @@ export default function Navbar() {
                             {session.data ?
                                 <>
                                     <DropdownMenuItem>
+                                        <Link href="/orders"
+                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
+                                            <ClipboardList/>Orders
+                                        </Link>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
                                         <Link href="/change-password"
                                               className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <UserPen/>Change Password
@@ -133,7 +139,6 @@ export default function Navbar() {
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </NavigationMenuList>
-
             </NavigationMenu>
         </div>
     )
