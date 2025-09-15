@@ -4,10 +4,10 @@ import {getProductDetails} from "@/actions/products.action";
 import ProductDetailsComp from "@/components/products-comps/ProductDetailsComp";
 
 export default async function ProductDetails({params}: { params: { id: string } }) {
-    const {id} = params;
+    const {id} = await params;
     const {data : productDetails} = await getProductDetails(id);
     return (
-        <div className={`container mx-auto`}>
+        <div className={`w-3/4 mx-auto my-25`}>
             <ProductDetailsComp productDetails={productDetails}/>
         </div>
     );
