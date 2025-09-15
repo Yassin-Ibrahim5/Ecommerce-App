@@ -52,50 +52,6 @@ export default function ProductCard({product}: { product: Product }) {
 
     return (
         <>
-            <>
-                {/*<Card className={`relative group overflow-hidden`}>*/}
-                {/*    <div*/}
-                {/*        className={`flex flex-col absolute z-20 top-[150px] right-[-100px] group-hover:right-[10px] transition-all duration-500`}>*/}
-                {/*        <button onClick={() => {*/}
-                {/*            handleAddToCart(product._id).then();*/}
-                {/*        }} className="p-2 text-black bg-slate-200 hover:text-[#717fe0] cursor-pointer z">*/}
-                {/*            <ShoppingCart/>*/}
-                {/*        </button>*/}
-                {/*        <button onClick={() => {*/}
-                {/*            if (wishlist?.data?.some((item) => item._id === product._id)) {*/}
-                {/*                handleRemoveFromWishlist(product._id).then();*/}
-                {/*            } else {*/}
-                {/*                handleAddToWishlist(product._id).then();*/}
-                {/*            }*/}
-                {/*        }} className="p-2 text-black bg-slate-200 hover:text-[#717fe0] cursor-pointer z">*/}
-                {/*            <Heart fill={wishlist?.data?.some((item) => item._id === product._id) ? "#717fe0" : "none"}*/}
-                {/*                   className={wishlist?.data?.some((item) => item._id === product._id) ? "text-[#717fe0]" : ""}*/}
-                {/*            />*/}
-                {/*        </button>*/}
-                {/*        <button className="p-2 text-black bg-slate-200 hover:text-[#717fe0] cursor-pointer z">*/}
-                {/*            <Link href={`/products/${product._id}`}>*/}
-                {/*                <ZoomIn/>*/}
-                {/*            </Link>*/}
-                {/*        </button>*/}
-                {/*    </div>*/}
-                {/*    <CardContent>*/}
-                {/*        <div className="relative w-full h-[300px]">*/}
-                {/*            <Image src={product.imageCover} alt={product.title} fill*/}
-                {/*                   sizes="(max-width:768px) 100vw (max-width:1280px) 50vw, 25vw" priority loading={"eager"}*/}
-                {/*                   className="object-cover"/>*/}
-                {/*        </div>*/}
-                {/*    </CardContent>*/}
-                {/*    <CardHeader>*/}
-                {/*        <CardTitle>{product.title.split(" ").slice(0, 2).join(" ")}</CardTitle>*/}
-                {/*        /!*<CardDescription>{product.description.split(" ").slice(0, 4).join(" ")}</CardDescription>*!/*/}
-                {/*    </CardHeader>*/}
-                {/*    <CardFooter className={`flex-col items-start`}>*/}
-                {/*        <h2 className="text-lg font-bold"><span>{product.price}</span> EGP</h2>*/}
-                {/*        /!*<StarRating initialRating={Math.floor(product.ratingsAverage)} dimension={7}*!/*/}
-                {/*        /!*            isHalfRatingEnabled={true}/>*!/*/}
-                {/*    </CardFooter>*/}
-                {/*</Card>*/}
-            </>
             <Card className="flex relative border-1 rounded-none">
                 <CardContent>
                     <div className="overflow-hidden block relative group w-full h-[300px]">
@@ -105,7 +61,7 @@ export default function ProductCard({product}: { product: Product }) {
                         <Button onClick={() => {
                             handleAddToCart(product._id).then();
                         }}
-                                className={`group-hover:bottom-[20px] absolute bottom-[-50px] left-[50%] transform -translate-x-1/2 cursor-pointer rounded-2xl text-[15px] h-[40px] min-w-[139px] transition-all duration-400 px-[15px]`}>
+                                className={`group-hover:bottom-[20px] hover:bg-[#717FE0] text-white absolute bottom-[-50px] left-[50%] transform -translate-x-1/2 cursor-pointer rounded-2xl text-[15px] h-[40px] min-w-[139px] transition-all duration-400 px-[15px]`}>
                             Add to Cart</Button>
                     </div>
                     <div className="flex flex-wrap items-start pt-[14px]">
