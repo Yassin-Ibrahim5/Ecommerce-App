@@ -9,7 +9,7 @@ import {useCart} from "@/app/context/CartContext";
 import {addToCart} from "@/actions/cart.action";
 import toast from "react-hot-toast";
 import {removeFromWishlist} from "@/actions/wishlist.action";
-import {HeartOff} from "lucide-react";
+import {HeartOff, Trash2} from "lucide-react";
 import LoadingPage from "@/app/wishlist/loading";
 import {Button} from "@/components/ui/button";
 
@@ -65,12 +65,14 @@ export default function WishlistTable() {
                                                         <Badge onClick={() => {
                                                             handleRemoveFromWishlist(product._id).then();
                                                         }}
-                                                               className={`absolute top-[-8] left-[-16px] cursor-pointer hover:bg-[#717FE0] transition-all duration-300`}>X</Badge>
+                                                               className={`absolute bottom-[calc(50%-18px)] left-[-63px] w-9 h-9 [&_svg]:!size-8 cursor-pointer rounded-full hover:bg-[#717FE0] transition-all duration-400`}>
+                                                            <Trash2/>
+                                                        </Badge>
                                                         <Image src={product.imageCover} alt={product.title} width={60}
                                                                height={60}/>
                                                     </div>
                                                     <Link href={`/products/${product._id}`}>
-                                                        <h2 className={`text-[#555] font-[Poppins] hover:text-[#717FE0] transition-all duration-300`}>{product.title.split(" ").slice(0, 2).join(" ")}</h2>
+                                                        <h2 className={`text-[#555] text-start font-[Poppins] hover:text-[#717FE0] transition-all duration-400 w-25`}>{product.title.split(" ").slice(0, 2).join(" ")}</h2>
                                                     </Link>
                                                 </div>
                                             </TableCell>
