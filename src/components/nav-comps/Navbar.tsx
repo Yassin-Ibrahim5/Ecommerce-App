@@ -101,7 +101,7 @@ export default function Navbar() {
                             {session.data ?
                                 <>
                                     <DropdownMenuItem>
-                                        <Link href="/orders"
+                                        <Link href="/allorders"
                                               className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <ClipboardList/>Orders
                                         </Link>

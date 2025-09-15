@@ -52,7 +52,7 @@ function Footer() {
                                 </Link>
                             </li>
                             <li className={`pb-[10px]`}>
-                                <Link href={`/orders`}
+                                <Link href={`/allorders`}
                                       className={`text-[13px] font-[Poppins] hover:text-[#717FE0] transition-all duration-400`}>
                                     Shipping
                                 </Link>

@@ -4,7 +4,7 @@ import {useOrders} from "@/app/context/OrdersContext";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import Link from "next/link";
 import {Logs} from "lucide-react";
-import LoadingPage from "@/app/orders/loading";
+import LoadingPage from "@/app/allorders/loading";
 import {Button} from "@/components/ui/button";
 
 export default function OrdersTable() {
@@ -46,7 +46,7 @@ export default function OrdersTable() {
                                             <TableCell className={`p-6 text-center`}>
                                                 <Button
                                                     className={`px-8 py-5 cursor-pointer bg-black rounded-[22px] hover:bg-[#717FE0] border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
-                                                    <Link href={`/orders`}>
+                                                    <Link href={`/allorders`}>
                                                         View Order
                                                     </Link>
                                                 </Button>
