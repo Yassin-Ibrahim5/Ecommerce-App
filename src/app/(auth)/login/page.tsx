@@ -49,7 +49,8 @@ export default function LoginPage() {
                 <h2 className="text-3xl mb-5 text-start font-bold uppercase font-[Poppins] text-[#222222]">Login</h2>
                 {errorMessage && <p className="text-red-500 text-lg">{errorMessage}</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Input {...register("email", {required: "Email is Required"})} className="p-5 my-5 focus-visible:ring-[#717FE080]" type="email"
+                    <Input {...register("email", {required: "Email is Required"})}
+                           className="p-5 my-5 focus-visible:ring-[#717FE080]" type="email"
                            placeholder="Email"/>
                     {errors.email && <p className="text-red-500">{errors.email.message}</p>}
                     <div className="relative">
