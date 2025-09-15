@@ -70,6 +70,10 @@ export default function Navbar() {
                             <Link href="/brands"
                                   className={`hover:text-[#717fe0] transition-all duration-400 ${isActive('/brands') ? 'text-[#717Fe0]' : ''}`}>Brands</Link>
                         </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <Link href="/about"
+                                  className={`hover:text-[#717fe0] transition-all duration-400 ${isActive('/about') ? 'text-[#717Fe0]' : ''}`}>About</Link>
+                        </NavigationMenuItem>
                     </div>
                 </NavigationMenuList>
                 <NavigationMenuList className={`font-bold gap-4`}>
