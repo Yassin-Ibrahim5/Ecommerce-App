@@ -1,7 +1,5 @@
 "use client";
 import React from 'react';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import {Category} from "@/app/types/category.model";
 import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
