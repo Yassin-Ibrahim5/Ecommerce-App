@@ -58,7 +58,7 @@ function Footer() {
                                 </Link>
                             </li>
                             <li className={`pb-[10px]`}>
-                                <Link href={`/`}
+                                <Link href={`/about`}
                                       className={`text-[13px] font-[Poppins] hover:text-[#717FE0] transition-all duration-400`}>
                                     FAQs
                                 </Link>

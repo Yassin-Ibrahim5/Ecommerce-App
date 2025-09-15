@@ -13,24 +13,20 @@ export default function AboutPage() {
                             <div className="pt-2 md:pt-7 lg:pr-20 md:pr-0">
                                 <h3 className="text-[25px] font-bold text-[#333] pb-4">Our Story</h3>
                                 <p className="text-[14px] font-light text-[#888] pb-[26px] leading-[25px]">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat
-                                    enim, non auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula
-                                    tellus, sed tincidunt augue. Orci varius natoque penatibus et magnis dis parturient
-                                    montes, nascetur ridiculus mus. Maecenas varius egestas diam, eu sodales metus
-                                    scelerisque congue. Pellentesque habitant morbi tristique senectus et netus et
-                                    malesuada fames ac turpis egestas. Maecenas gravida justo eu arcu egestas convallis.
-                                    Nullam eu erat bibendum, tempus ipsum eget, dictum enim. Donec non neque ut enim
-                                    dapibus tincidunt vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec
-                                    condimentum euismod tortor, eget facilisis diam faucibus et. Morbi a tempor elit.
+                                    Our story began with a simple idea: to make shopping feel less like a task and more
+                                    like a moment of discovery. We wanted a place where people could find things they
+                                    love, without the stress of endless searching. Every product we share has been
+                                    chosen with care, keeping in mind the details that turn everyday items into small
+                                    joys. For us, it’s about creating a space where style, comfort, and convenience come
+                                    together in a way that feels natural and inspiring.
                                 </p>
                                 <p className="text-[14px] font-light text-[#888] pb-[26px] leading-[25px]">
-                                    Donec gravida lorem elit, quis condimentum ex semper sit amet. Fusce eget ligula
-                                    magna. Aliquam aliquam imperdiet sodales. Ut fringilla turpis in vehicula vehicula.
-                                    Pellentesque congue ac orci ut gravida. Aliquam erat volutpat. Donec iaculis lectus
-                                    a arcu facilisis, eu sodales lectus sagittis. Etiam pellentesque, magna vel dictum
-                                    rutrum, neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed rutrum,
-                                    turpis ut commodo efficitur, quam velit convallis ipsum, et maximus enim ligula ac
-                                    ligula.
+                                    Over time, this little dream has grown into a community that values connection and
+                                    trust. We’re proud to support makers, creators, and brands who put passion into what
+                                    they do. Whether it’s a thoughtful gift, a new favorite outfit, or something that
+                                    simply makes life easier, we’re here to help you find it. More than just selling
+                                    products, we hope to share stories, spark inspiration, and make shopping feel more
+                                    personal. After all, our journey is only possible because of you.
                                 </p>
                                 <p className="text-[14px] font-light text-[#888] pb-[26px] leading-[25px]">
                                     Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018
@@ -64,16 +60,15 @@ export default function AboutPage() {
                             <div className="pt-2 pl-21 md:pt-7 lg:pr-20 md:pr-0">
                                 <h3 className="text-[25px] font-bold text-[#333] pb-4">Our Mission</h3>
                                 <p className="text-[14px] font-light text-[#888] pb-[26px] leading-[25px]">
-                                    Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim
-                                    risus, sed consectetur erat. Pellentesque habitant morbi tristique senectus et netus
-                                    et malesuada fames ac turpis egestas. Nullam maximus mauris sit amet odio convallis,
-                                    in pharetra magna gravida. Praesent sed nunc fermentum mi molestie tempor. Morbi
-                                    vitae viverra odio. Pellentesque ac velit egestas, luctus arcu non, laoreet mauris.
-                                    Sed in ipsum tempor, consequat odio in, porttitor ante. Ut mauris ligula, volutpat
-                                    in sodales in, porta non odio. Pellentesque tempor urna vitae mi vestibulum, nec
-                                    venenatis nulla lobortis. Proin at gravida ante. Mauris auctor purus at lacus
-                                    maximus euismod. Pellentesque vulputate massa ut nisl hendrerit, eget elementum
-                                    libero iaculis.
+                                    Our mission is to make shopping feel meaningful, personal, and accessible to
+                                    everyone, no matter where they are. We believe that every product has a story, and
+                                    every choice you make should bring value to your life. That’s why we carefully
+                                    select items that balance quality, style, and affordability, so you never have to
+                                    compromise. Beyond products, we aim to build a community that celebrates
+                                    individuality and encourages self-expression. Through simple navigation, secure
+                                    shopping, and responsive support, we want each experience to be stress-free and
+                                    enjoyable. Our promise is to connect people with things they truly love, every
+                                    single day.
                                 </p>
                                 <div className="border-l-3 border-l-solid mt-[22px] pl-7 pb-2">
                                     <p className="italic text-[#888] text-[15px] pr-10 pb-3 leading-[25px]">
