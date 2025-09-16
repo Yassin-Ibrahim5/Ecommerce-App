@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from "next/image";
 
 export default function AboutPage() {
     return (
@@ -39,8 +40,10 @@ export default function AboutPage() {
                                 className="relative z-1 before:absolute before:w-full before:h-full before:block before:-z-1 before:border-3 before:border-solid before:border-[#ccc] before:bottom-[-21px] before:left-[-21px]">
 
                                 <div className="block overflow-hidden group">
-                                    <img src="/about-imgs/about-01.jpg" alt="About Image 1"
-                                         className="w-full transition-all duration-900 align-middle border-none group-hover:scale-110"/>
+                                    <Image src="/about-imgs/about-01.jpg" alt="About Image 1" width={320} height={320}
+                                           sizes="(max-width:768px) 100vw (max-width:1280px) 50vw, 25vw" priority
+                                           loading={"eager"}
+                                           className="w-full transition-all duration-900 align-middle border-none group-hover:scale-110"/>
                                 </div>
                             </div>
                         </div>
@@ -51,8 +54,10 @@ export default function AboutPage() {
                                 className="relative z-1 before:absolute before:w-full before:h-full before:block before:-z-1 before:border-3 before:border-solid before:border-[#ccc] before:bottom-[-21px] before:right-[-21px]">
 
                                 <div className="block overflow-hidden group">
-                                    <img src="/about-imgs/about-02.jpg" alt="About Image 2"
-                                         className="w-full transition-all duration-900 align-middle border-none group-hover:scale-110"/>
+                                    <Image src="/about-imgs/about-02.jpg" alt="About Image 2" width={320} height={320}
+                                           sizes="(max-width:768px) 100vw (max-width:1280px) 50vw, 25vw" priority
+                                           loading={"eager"}
+                                           className="w-full transition-all duration-900 align-middle border-none group-hover:scale-110"/>
                                 </div>
                             </div>
                         </div>
