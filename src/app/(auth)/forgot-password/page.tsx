@@ -13,7 +13,7 @@ export default function ForgotPassword() {
     }
 
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
-    const [errorMessage, setErrorMessage] = useState<any>(null);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 

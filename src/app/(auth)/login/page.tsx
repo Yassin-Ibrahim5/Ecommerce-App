@@ -17,7 +17,7 @@ export default function LoginPage() {
     }
 
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
-    const [errorMessage, setErrorMessage] = useState<any>(null);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
@@ -37,7 +37,11 @@ export default function LoginPage() {
                 setErrorMessage("Invalid email or password");
             }
         } catch (error: unknown) {
-            setErrorMessage(error);
+            if (error instanceof Error) {
+                if (error.message.includes("CredentialsSignin")) {
+                    setErrorMessage("Invalid email or password");
+                }
+            }
         } finally {
             setLoading(false);
         }
@@ -69,8 +73,7 @@ export default function LoginPage() {
                             password?</Link>
                     </p>
                     <p className="mb-2">
-                        Don't have an account? <Link href="/register"
-                                                     className="text-[#717FE0] hover:underline">Register</Link>
+                        Don't have an account? <Link href="/register" className="text-[#717FE0] hover:underline">Register</Link>
                     </p>
 
                 </form>
