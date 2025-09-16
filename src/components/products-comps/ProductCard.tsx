@@ -96,7 +96,7 @@ export default function ProductCard({product}: { product: Product }) {
                                         } else {
                                             handleAddToWishlist(product._id).then();
                                         }
-                                    }} className={`bg-transparent group hover:bg-transparent cursor-pointer`}>
+                                    }} className={`bg-transparent shadow-none group hover:bg-transparent cursor-pointer`}>
                                         <Heart
                                             fill={wishlist?.data?.some((item) => item._id === product._id) ? "#717fe0" : "none"}
                                             className={wishlist?.data?.some((item) => item._id === product._id) ? "text-[#717fe0]" : "text-[#999] group-hover:text-[#717fe0] transition-all duration-400 group-hover:fill-[#717fe0]"}/>
