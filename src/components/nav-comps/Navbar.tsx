@@ -1,7 +1,7 @@
 "use client";
 import {NavigationMenu, NavigationMenuItem, NavigationMenuList,} from "@/components/ui/navigation-menu";
 import React, {useEffect, useState} from "react";
-import {ClipboardList, Heart, LogIn, LogOut, ShoppingCart, User, UserCog, UserPen, UserPlus} from "lucide-react";
+import {ClipboardList, Heart, LogIn, LogOut, ShoppingCart, User, UserCog, UserPen, UserPlus, XIcon} from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -9,18 +9,31 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import {signOut, useSession} from "next-auth/react";
 import {Badge} from "@/components/ui/badge";
 import {useCart} from "@/app/context/CartContext";
 import {useWishlist} from "@/app/context/WishlistContext";
 import {usePathname} from "next/navigation";
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet";
+import {Button} from "@/components/ui/button";
+import Image from "next/image";
+import {removeFromCart} from "@/actions/cart.action";
+import toast from "react-hot-toast";
 
 export default function Navbar() {
     const session = useSession();
 
-    const {cartDetails} = useCart();
+    const {cartDetails, fetchCart} = useCart();
     const {wishlist} = useWishlist();
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
@@ -44,6 +57,18 @@ export default function Navbar() {
         if (path === '/') return pathname === path;
         return pathname.startsWith(path);
     }
+
+    async function handleRemoveFromCart(productId: string) {
+        try {
+            const response = await removeFromCart(productId);
+            await fetchCart();
+            toast.success("Product removed successfully from your cart");
+            return response;
+        } catch (error) {
+            toast.error("Something went wrong");
+        }
+    }
+
     return (
         <div
             className={`flex justify-between items-center py-1 px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
@@ -77,13 +102,96 @@ export default function Navbar() {
                     </div>
                 </NavigationMenuList>
                 <NavigationMenuList className={`font-bold gap-4`}>
-                    <button>
-                        {cartDetails?.numOfCartItems ?
-                            <Badge className={`absolute -top-4 bg-[#717FE0] text-white`}>{cartDetails?.numOfCartItems}</Badge> :
-                            null}
-                        <Link href="/cart"><ShoppingCart
-                            className={`hover:text-[#717fe0] text-[#222] fill-[#222] hover:fill-[#717FE0] transition-all duration-400 ${isActive('/cart') ? 'text-[#717FE0] fill-[#717FE0]' : ''}`}/></Link>
-                    </button>
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <button>
+                                {cartDetails?.numOfCartItems ?
+                                    <Badge
+                                        className={`absolute -top-4 bg-[#717FE0] text-white`}>{cartDetails?.numOfCartItems}</Badge> :
+                                    null}
+                                <ShoppingCart
+                                    className={`hover:text-[#717fe0] text-[#222] fill-[#222] cursor-pointer hover:fill-[#717FE0] transition-all duration-400 ${isActive('/cart') ? 'text-[#717FE0] fill-[#717FE0]' : ''}`}/>
+                            </button>
+                        </SheetTrigger>
+                        <SheetContent className={`w-[390px] font-[Poppins] py-7 px-10 flex`} side="right">
+                            <SheetHeader className={`flex flex-row justify-between items-center gap-2`}>
+                                <SheetTitle className={`text-[#333] leading-6 text-[18px] font-bold uppercase`}>Your
+                                    Cart</SheetTitle>
+                                <SheetClose asChild className={``}>
+                                    <XIcon
+                                        className={`size-8 text-[#333] cursor-pointer hover:text-[#717fe0] transition-all duration-400`}/>
+                                </SheetClose>
+                            </SheetHeader>
+                            {cartDetails?.numOfCartItems !== 0 ?
+                                (<ul className="w-full flex flex-col list-none">
+                                    {cartDetails?.data.products.slice(0, 4).map((product) => (
+                                        <li key={product._id} className={`flex items-start flex-wrap mb-3`}>
+                                            <div
+                                                onClick={() => {
+                                                    handleRemoveFromCart(product.product._id).then();
+                                                }}
+                                                className={`w-15 relative mr-5 cursor-pointer 
+                                                after:opacity-0 after:absolute after:top-0 after:left-0 
+                                                after:flex after:justify-center after:items-center after:w-full after:h-full 
+                                                after:bg-[#00000080] after:transition-all after:duration-400 hover:after:opacity-100 
+                                                after:content-["X"] after:text-white`}>
+                                                <Image src={product.product.imageCover} alt={product.product.title}
+                                                       width={60} height={60}
+                                                       className={``}/>
+                                            </div>
+                                            <div className={`w-[calc(100%-80px)] pt-2`}>
+                                                <SheetClose asChild>
+                                                    <Link href={`/products/${product.product._id}`}
+                                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>
+                                                        {product.product.title.split(" ").slice(0, 2).join(" ")}
+                                                    </Link>
+                                                </SheetClose>
+                                                <span
+                                                    className={`text-[#888] text-[14px] leading-[1.5]`}>{product.count} x {product.price} EGP</span>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>) : (
+                                    <div
+                                        className={`w-full text-center mx-auto mt-5 flex flex-col items-center justify-center gap-5`}>
+                                        <h2 className={`text-2xl font-bold`}>Your cart is empty</h2>
+                                        <p className={`text-[#888] text-md leading-6`}>
+                                            Add items to your cart to view and checkout</p>
+                                        <Link href={`/`}
+                                              className={`text-[#717fe0] hover:underline text-md`}>
+                                            Continue Shopping
+                                        </Link>
+                                    </div>
+                                )
+                            }
+                            {cartDetails?.numOfCartItems && cartDetails.numOfCartItems > 4 && (
+                                <div className={`w-full text-center mx-auto mt-5 flex flex-col gap-5`}>
+                                    <Link href={`/cart`} className={`text-lg font-bold text-start hover:text-[#717FE0] transition-all duration-400`}>View Full Cart</Link>
+                                </div>
+                            )}
+                            <SheetFooter>
+                                <div className={`py-10 text-[18px] text-[#222] leading-6 w-full`}>
+                                    Total: {cartDetails?.data.totalCartPrice} EGP
+                                </div>
+                                <div className="flex justify-center items-center w-full gap-2">
+                                    <SheetClose asChild>
+                                        <Link href={`/cart`}>
+                                            <Button
+                                                className={`hover:bg-[#717fe0] transition-all duration-300 bg-[#222222] text-[15px] text-white px-9 rounded-[20px] uppercase font-poppins py-[22px] cursor-pointer`}>
+                                                View Cart</Button>
+                                        </Link>
+                                    </SheetClose>
+                                    <SheetClose asChild>
+                                        <Link href={`/checkout`}>
+                                            <Button
+                                                className={`hover:bg-[#717fe0] transition-all duration-300 bg-[#222222] text-[15px] text-white px-9 rounded-[20px] uppercase font-poppins py-[22px] cursor-pointer`}>
+                                                Checkout</Button>
+                                        </Link>
+                                    </SheetClose>
+                                </div>
+                            </SheetFooter>
+                        </SheetContent>
+                    </Sheet>
                     <button>
                         {wishlist?.count ?
                             <Badge className={`absolute -top-4 bg-[#717FE0] text-white`}>{wishlist.count}</Badge> :
