@@ -290,7 +290,9 @@ export default function Navbar() {
                         </SheetTrigger>
                         <SheetContent className={`w-[250px] sm:w-[300px] flex font-[Poppins] p-5`} side={`right`}>
                             <SheetHeader className={`flex flex-row justify-between items-start gap-2`}>
-                                <SheetTitle className={`text-[#333] leading-6 text-[18px] font-bold uppercase`}>Navigation</SheetTitle>
+                                <SheetTitle className={`text-[#333] leading-6 text-[18px] font-bold uppercase`}>
+                                    <Image src="/logo.png" alt="SnapCart Logo" width={30} height={30}/>
+                                </SheetTitle>
                                 <SheetClose className={`top-0 right-0 md:top-4 md:right-4`} asChild>
                                     <XIcon
                                         className={`size-6 text-[#333] cursor-pointer hover:text-[#717fe0] transition-all duration-400`}/>
