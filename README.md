@@ -1,6 +1,6 @@
 # Next.js Ecommerce App
 
-![Project preview](https://i.imgur.com/K2FzUqS.png)
+![Project preview](public/SnapCart-Preview.png)
 
 This is a full-featured ecommerce application built with Next.js, and React. It provides a complete shopping experience, from browsing products to secure authentication and a seamless checkout process.
 
