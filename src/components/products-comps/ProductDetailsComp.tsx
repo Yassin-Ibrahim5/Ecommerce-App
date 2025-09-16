@@ -10,12 +10,18 @@ import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious}
 import Autoplay from "embla-carousel-autoplay";
 import Fade from "embla-carousel-fade";
 import {Button} from "@/components/ui/button";
+import {getUserToken} from "@/lib/token.utils";
 
 export default function ProductDetailsComp({productDetails}: { productDetails: ProductDetail }) {
     const {fetchCart} = useCart();
 
     async function handleAddToCart(productId: string) {
         try {
+            const token = await getUserToken();
+            if (!token) {
+                toast.error("You need to login to add products to your cart");
+                return;
+            }
             const response = await addToCart(productId);
             toast.success("Product added successfully to your cart");
             await fetchCart();
@@ -76,7 +82,7 @@ export default function ProductDetailsComp({productDetails}: { productDetails: P
                     </div>
                 </div>
                 <Button onClick={() => {
-                    handleAddToCart(productDetails._id);
+                    handleAddToCart(productDetails._id).then();
                 }}
                         className={`rounded-[23px] bg-[#717FE0] min-w-40 h-11 font-medium text-[15px] uppercase text-white flex items-center justify-center transition-all duration-400 hover:bg-[#222222] px-[15px] cursor-pointer`}>
                     Add to Cart
