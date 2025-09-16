@@ -36,7 +36,7 @@ export default function ProductDetailsComp({productDetails}: { productDetails: P
                 } plugins={
                     [
                         Autoplay({
-                            delay: 2500
+                            delay: 3500
                         }),
                         Fade()
                     ]
