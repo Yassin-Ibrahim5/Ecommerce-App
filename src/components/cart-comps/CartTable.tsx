@@ -137,7 +137,7 @@ export default function CartTable() {
                                                 <Image src={product.product.imageCover} alt={product.product.title}
                                                        width={80} height={80} className={`rounded-md`}/>
                                                 <Link href={`/products/${product.product._id}`}>
-                                                    <h3 className="text-base font-bold text-[#555] hover:text-[#717FE0]">
+                                                    <h3 className="text-base font-bold text-[#555] hover:text-[#717FE0] transition-all duration-400">
                                                         {product.product.title.split(" ").slice(0, 3).join(" ")}
                                                     </h3>
                                                 </Link>
@@ -145,11 +145,11 @@ export default function CartTable() {
                                             <button onClick={() => {
                                                 handleRemoveFromCart(product.product._id).then()
                                             }}
-                                                    className={`text-gray-500 hover:text-red-500 transition-all duration-400 cursor-pointer`}>
+                                                    className={`text-[#888] hover:text-red-500 transition-all duration-400 cursor-pointer`}>
                                                 <Trash2 size={24}/>
                                             </button>
                                         </div>
-                                        <div className="grid grid-cols-2 gap-2 text-sm text-gray-700">
+                                        <div className="grid grid-cols-2 gap-2 text-sm text-[#555]">
                                             <div className="font-semibold">Price:</div>
                                             <div>{product.price} EGP</div>
                                             <div className="flex items-center justify-start">
