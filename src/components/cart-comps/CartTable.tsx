@@ -133,7 +133,7 @@ export default function CartTable() {
                                     size={62}/>
                             </div>
                             <h2 className={`text-3xl font-bold`}>Your cart is empty!</h2>
-                            <p className={`text-md w-[75%] text-center text-slate-500`}>Found something you like? Tap on
+                            <p className={`text-md w-[75%] text-center text-[#888]`}>Found something you like? Tap on
                                 the
                                 add to cart button on the item to add it to your cart!</p>
                             <Link href={`/`}
