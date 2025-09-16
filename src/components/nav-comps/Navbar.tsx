@@ -137,7 +137,7 @@ export default function Navbar() {
                                 className={`flex flex-row md:justify-between justify-start items-center gap-2`}>
                                 <SheetTitle className={`text-[#333] leading-6 text-[18px] font-bold uppercase`}>Your
                                     Cart</SheetTitle>
-                                <SheetClose className={`top-0 right-0 md:top-4 md:top-4`} asChild>
+                                <SheetClose className={`top-0 right-0 md:top-4`} asChild>
                                     <XIcon
                                         className={`size-8 md:size-8 text-[#333] cursor-pointer hover:text-[#717fe0] transition-all duration-400`}/>
                                 </SheetClose>
@@ -269,13 +269,13 @@ export default function Navbar() {
                                 <>
                                     <DropdownMenuItem>
                                         <Link href="/register"
-                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
+                                              className="font-normal flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <UserPlus/>Register
                                         </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem>
                                         <Link href="/login"
-                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
+                                              className="font-normal flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <LogIn/>Log In
                                         </Link>
                                     </DropdownMenuItem>
