@@ -133,19 +133,19 @@ export default function WishlistTable() {
                                 ))}
                             </div>
                         </div>) :
-                        <div className={`w-1/2 mx-auto flex flex-col items-center justify-center gap-5 font-[Poppins]`}>
+                        <div className={`w-11/12 md:1/2 mx-auto flex flex-col items-center justify-center gap-5 font-[Poppins]`}>
                             <div
                                 className={`flex items-center justify-center rounded-full bg-slate-100 p-10 group hover:bg-[#717FE0] transition-all duration-400`}>
                                 <HeartOff
                                     className={`text-6xl text-black group-hover:text-white transition-all duration-400`}
                                     size={62}/>
                             </div>
-                            <h2 className={`text-3xl font-bold`}>Your wishlist is empty!</h2>
-                            <p className={`text-md w-[75%] text-center text-slate-500`}>Found something you like? Tap on
+                            <h2 className={`text-2xl md:text-3xl font-bold text-center`}>Your wishlist is empty!</h2>
+                            <p className={`text-sm md:text-md w-full text-center text-[#888]`}>Found something you like? Tap on
                                 the heart shaped icon next
                                 to the item to add it to your wishlist! All your saved items will appear here.</p>
-                            <Link href={`/`}
-                                  className={`px-8 py-4 cursor-pointer bg-black rounded-[22px] hover:bg-[#717FE0] border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
+                            <Link href={`/products`}
+                                  className={`px-6 py-3 md:px-8 md:py-4 cursor-pointer my-5 bg-black rounded-[22px] hover:bg-[#717FE0] border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
                                 Continue Shopping
                             </Link>
                         </div>
