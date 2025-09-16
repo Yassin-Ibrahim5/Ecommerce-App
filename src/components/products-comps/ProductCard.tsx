@@ -11,6 +11,7 @@ import {Button} from "@/components/ui/button";
 import {Card, CardContent} from "@/components/ui/card";
 import Link from "next/link";
 import {Heart} from "lucide-react";
+import {getUserToken} from "@/lib/token.utils";
 
 export default function ProductCard({product}: { product: Product }) {
 
@@ -19,6 +20,11 @@ export default function ProductCard({product}: { product: Product }) {
 
     async function handleAddToCart(productId: string) {
         try {
+            const token = await getUserToken();
+            if (!token) {
+                toast.error("You need to login to add products to your cart. Please login to continue");
+                return;
+            }
             const response = await addToCart(productId);
             toast.success("Product added successfully to your cart");
             await fetchCart();
@@ -30,6 +36,11 @@ export default function ProductCard({product}: { product: Product }) {
 
     async function handleAddToWishlist(productId: string) {
         try {
+            const token = await getUserToken();
+            if (!token) {
+                toast.error("You need to login to add products to your wishlist. Please login to continue");
+                return;
+            }
             const response = await addToWishlist(productId);
             toast.success("Product added successfully to your wishlist");
             await fetchWishlist()
@@ -41,6 +52,11 @@ export default function ProductCard({product}: { product: Product }) {
 
     async function handleRemoveFromWishlist(productId: string) {
         try {
+            const token = await getUserToken();
+            if (!token) {
+                toast.error("You need to login to remove products from your wishlist. Please login to continue");
+                return;
+            }
             const response = await removeFromWishlist(productId);
             toast.success("Product removed successfully from your wishlist");
             await fetchWishlist()
