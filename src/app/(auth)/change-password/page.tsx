@@ -54,32 +54,32 @@ export default function ChangePassword() {
     }
 
     return (
-        <div className="my-30 font-[Poppins]">
-            <div className="w-1/2 mx-auto">
-                <h2 className="text-3xl mb-5 text-start font-bold uppercase font-[Poppins] text-[#222222]">Change
+        <div className="my-30 font-[Poppins] px-4 sm:px-6 lg:px-8">
+            <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
+                <h2 className="text-2xl md:text-3xl mb-5 md:text-start font-bold uppercase font-[Poppins] text-[#222222]">Change
                     Password</h2>
-                {errorMessage && <p className="text-red-500 text-lg">{errorMessage}</p>}
+                {errorMessage && <p className="text-red-500 text-sm md:text-lg">{errorMessage}</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="relative currentPasswordInput">
                         <ShowHidePassword {...register("currentPassword", {required: "Current Password is Required"})}
                                           placeholder="Current Password"/>
                     </div>
-                    {errors.currentPassword && <p className="text-red-500">{errors.currentPassword.message}</p>}
+                    {errors.currentPassword && <p className="text-red-500 text-sm">{errors.currentPassword.message}</p>}
 
                     <div className="relative newPasswordInput">
                         <ShowHidePassword {...register("password", {required: "New Password is Required"})}
                                           placeholder={"New Password"}/>
                     </div>
-                    {errors.password && <p className="text-red-500">{errors.password.message}</p>}
+                    {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
                     <div className="relative rePasswordInput">
                         <ShowHidePassword {...register("rePassword", {required: "RePassword is Required"})}
                                           placeholder={"RePassword"}/>
                     </div>
-                    {errors.rePassword && <p className="text-red-500">{errors.rePassword.message}</p>}
+                    {errors.rePassword && <p className="text-red-500 text-sm">{errors.rePassword.message}</p>}
 
                     <div className="flex items-center gap-5">
                         <Button type="submit" disabled={loading}
-                                className={`px-10 py-5 cursor-pointer my-5 bg-black rounded-[22px] hover:bg-[#717FE0] hover:text-white border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
+                                className={`w-full sm:w-auto px-6 py-3 md:px-10 md:py-5 cursor-pointer my-3 md:my-5 bg-black rounded-[22px] hover:bg-[#717FE0] hover:text-white border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
                             {loading ? <Loader className={`animate-spin`} size={20}/> : "Change Password"}
                         </Button>
                     </div>
