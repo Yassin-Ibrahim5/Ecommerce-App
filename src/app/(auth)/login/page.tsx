@@ -48,23 +48,23 @@ export default function LoginPage() {
     }
 
     return (
-        <div className={`my-30 font-[Poppins]`}>
-            <div className="w-1/2 mx-auto">
-                <h2 className="text-3xl mb-5 text-start font-bold uppercase font-[Poppins] text-[#222222]">Login</h2>
-                {errorMessage && <p className="text-red-500 text-lg">{errorMessage}</p>}
+        <div className={`my-30 font-[Poppins] px-4 sm:px-6 lg:px-8`}>
+            <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
+                <h2 className="text-2xl md:text-3xl mb-5 md:text-start font-bold uppercase font-[Poppins] text-[#222222]">Login</h2>
+                {errorMessage && <p className="text-red-500 text-center text-sm md:text-lg">{errorMessage}</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Input {...register("email", {required: "Email is Required"})}
-                           className="p-5 my-5 focus-visible:ring-[#717FE080]" type="email"
+                           className="p-3 md:p-5 my-3 md:my-5 focus-visible:ring-[#717FE080]" type="email"
                            placeholder="Email"/>
-                    {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+                    {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                     <div className="relative">
                         <ShowHidePassword {...register("password", {required: "Password is Required"})}
                                           placeholder={"Password"}/>
                     </div>
-                    {errors.password && <p className="text-red-500">{errors.password.message}</p>}
+                    {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
                     <div className="flex items-center gap-5">
                         <Button type="submit" disabled={loading}
-                                className={`px-10 py-5 cursor-pointer my-5 bg-black rounded-[22px] hover:bg-[#717FE0] hover:text-white border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
+                                className={`w-full sm:w-auto px-6 py-3 md:px-10 md:py-5 cursor-pointer my-5 bg-black rounded-[22px] hover:bg-[#717FE0] hover:text-white border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
                             {loading ? <Loader className={`animate-spin`} size={20}/> : "Login"}
                         </Button>
                     </div>

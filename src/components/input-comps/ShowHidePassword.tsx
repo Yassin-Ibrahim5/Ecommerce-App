@@ -13,7 +13,7 @@ export default function ShowHidePassword({placeholder, ...restProps}: {
 
     return (
         <>
-            <Input {...restProps} className={`p-5 my-5 focus-visible:ring-[#717FE080]`}
+            <Input {...restProps} className={`p-3 md:p-5 my-3 md:my-5 focus-visible:ring-[#717FE080]`}
                    type={showPassword ? 'text' : 'password'} placeholder={placeholder}>
             </Input>
             <button type="button" onClick={togglePasswordVisibility}
