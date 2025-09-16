@@ -83,10 +83,10 @@ export default function Navbar() {
 
     return (
         <div
-            className={`max-w-[100vw] flex justify-between items-center py-1 px-4 md:px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
+            className={`max-w-[100vw] flex justify-between items-center py-2 px-4 md:px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
             {/*Logo and Desktop Menu*/}
-            <NavigationMenu className={`text-md p-4 md:p-5 flex justify-between max-w-7xl items-center mx-auto w-full`}>
-                <NavigationMenuList className={`font-[Poppins] gap-6 md:gap-12 flex-wrap`}>
+            <NavigationMenu className={`text-md p-3 md:p-5 flex justify-center lg:justify-between max-w-7xl gap-3 lg:gap-0 items-center mx-auto w-full`}>
+                <NavigationMenuList className={`font-[Poppins] gap-6 md:gap-12`}>
                     <NavigationMenuItem>
                         <Link href={`/`}
                               className={`uppercase text-2xl md:text-3xl tracking-normal font-[Poppins]`}><span
@@ -118,7 +118,7 @@ export default function Navbar() {
                 </NavigationMenuList>
 
                 {/*Icons and Mobile Menu Trigger*/}
-                <NavigationMenuList className={`font-bold gap-4 font-[Poppins] flex-wrap`}>
+                <NavigationMenuList className={`font-bold gap-4 font-[Poppins]`}>
                     <Sheet>
                         <SheetTrigger asChild>
                             <button className={`hidden md:block`}>
@@ -293,29 +293,29 @@ export default function Navbar() {
                                 <SheetTitle className={`text-[#333] leading-6 text-[18px] font-bold uppercase`}>Navigation</SheetTitle>
                                 <SheetClose className={`top-0 right-0 md:top-4 md:top-4`} asChild>
                                     <XIcon
-                                        className={`size-8 md:size-8 text-[#333] cursor-pointer hover:text-[#717fe0] transition-all duration-400`}/>
+                                        className={`size-6 md:size-8 text-[#333] cursor-pointer hover:text-[#717fe0] transition-all duration-400`}/>
                                 </SheetClose>
                             </SheetHeader>
                             <div className="w-full ml-4 mr-auto mt-5 flex flex-col justify-center gap-4">
                                 <SheetClose asChild>
                                     <Link href={`/`}
-                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Home</Link>
+                                          className={`text-[#555] text-[16px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Home</Link>
                                 </SheetClose>
                                 <SheetClose asChild>
                                     <Link href="/products"
-                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Shop</Link>
+                                          className={`text-[#555] text-[16px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Shop</Link>
                                 </SheetClose>
                                 <SheetClose asChild>
                                     <Link href="/categories"
-                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Categories</Link>
+                                          className={`text-[#555] text-[16px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Categories</Link>
                                 </SheetClose>
                                 <SheetClose asChild>
                                     <Link href="/brands"
-                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Brands</Link>
+                                          className={`text-[#555] text-[16px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Brands</Link>
                                 </SheetClose>
                                 <SheetClose asChild>
                                     <Link href="/about"
-                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>About</Link>
+                                          className={`text-[#555] text-[16px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>About</Link>
                                 </SheetClose>
                             </div>
                         </SheetContent>
