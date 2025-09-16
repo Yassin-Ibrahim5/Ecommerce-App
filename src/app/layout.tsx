@@ -47,7 +47,7 @@ export default function RootLayout({children}: Readonly<{
         <html lang="en">
         <body
             suppressHydrationWarning
-            className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${playfair.variable} ${montserrat.variable} text-[#222] antialiased`}>
+            className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${playfair.variable} ${montserrat.variable} text-[#222] antialiased max-w-[100vw]`}>
 
             <AuthProvider>
                 <Navbar/>

@@ -1,7 +1,19 @@
 "use client";
 import {NavigationMenu, NavigationMenuItem, NavigationMenuList,} from "@/components/ui/navigation-menu";
 import React, {useEffect, useState} from "react";
-import {ClipboardList, Heart, LogIn, LogOut, ShoppingCart, User, UserCog, UserPen, UserPlus, XIcon} from "lucide-react";
+import {
+    ClipboardList,
+    Heart,
+    LogIn,
+    LogOut,
+    Menu,
+    ShoppingCart,
+    User,
+    UserCog,
+    UserPen,
+    UserPlus,
+    XIcon
+} from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -71,14 +83,17 @@ export default function Navbar() {
 
     return (
         <div
-            className={`flex justify-between items-center py-1 px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
-            <NavigationMenu className={`text-md p-5 flex justify-between max-w-7xl items-center mx-auto`}>
-                <NavigationMenuList className={`font-[Poppins] gap-12`}>
+            className={`max-w-[100vw] flex justify-between items-center py-1 px-4 md:px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
+            {/*Logo and Desktop Menu*/}
+            <NavigationMenu className={`text-md p-4 md:p-5 flex justify-between max-w-7xl items-center mx-auto w-full`}>
+                <NavigationMenuList className={`font-[Poppins] gap-6 md:gap-12 flex-wrap`}>
                     <NavigationMenuItem>
-                        <Link href={`/`} className={`uppercase text-3xl tracking-normal font-[Poppins]`}><span
+                        <Link href={`/`}
+                              className={`uppercase text-2xl md:text-3xl tracking-normal font-[Poppins]`}><span
                             className={`font-bold`}>Snap</span><span className={`font-normal`}>Cart</span></Link>
                     </NavigationMenuItem>
-                    <div className={`flex items-center gap-6`}>
+                    {/*Desktop Menu Links (hidden on smaller screens)*/}
+                    <div className={`hidden md:flex items-center gap-6`}>
                         <NavigationMenuItem>
                             <Link href="/"
                                   className={`hover:text-[#717fe0] transition-all duration-400 ${isActive('/') ? 'text-[#717Fe0]' : ''}`}>Home</Link>
@@ -101,10 +116,12 @@ export default function Navbar() {
                         </NavigationMenuItem>
                     </div>
                 </NavigationMenuList>
-                <NavigationMenuList className={`font-bold gap-4`}>
+
+                {/*Icons and Mobile Menu Trigger*/}
+                <NavigationMenuList className={`font-bold gap-4 font-[Poppins] flex-wrap`}>
                     <Sheet>
                         <SheetTrigger asChild>
-                            <button>
+                            <button className={`hidden md:block`}>
                                 {cartDetails?.numOfCartItems ?
                                     <Badge
                                         className={`absolute -top-4 bg-[#717FE0] text-white`}>{cartDetails?.numOfCartItems}</Badge> :
@@ -113,13 +130,16 @@ export default function Navbar() {
                                     className={`hover:text-[#717fe0] text-[#222] fill-[#222] cursor-pointer hover:fill-[#717FE0] transition-all duration-400 ${isActive('/cart') ? 'text-[#717FE0] fill-[#717FE0]' : ''}`}/>
                             </button>
                         </SheetTrigger>
-                        <SheetContent className={`w-[390px] font-[Poppins] py-7 px-10 flex`} side="right">
-                            <SheetHeader className={`flex flex-row justify-between items-center gap-2`}>
+                        <SheetContent
+                            className={`w-full sm:w-[390px] max-w-[100vw] max-h-[100vh] font-[Poppins] py-1 px-2 md:py-7 md:px-10 flex`}
+                            side="right">
+                            <SheetHeader
+                                className={`flex flex-row md:justify-between justify-start items-center gap-2`}>
                                 <SheetTitle className={`text-[#333] leading-6 text-[18px] font-bold uppercase`}>Your
                                     Cart</SheetTitle>
-                                <SheetClose asChild className={``}>
+                                <SheetClose className={`top-0 right-0 md:top-4 md:top-4`} asChild>
                                     <XIcon
-                                        className={`size-8 text-[#333] cursor-pointer hover:text-[#717fe0] transition-all duration-400`}/>
+                                        className={`size-8 md:size-8 text-[#333] cursor-pointer hover:text-[#717fe0] transition-all duration-400`}/>
                                 </SheetClose>
                             </SheetHeader>
                             {cartDetails?.numOfCartItems !== 0 ?
@@ -166,25 +186,28 @@ export default function Navbar() {
                             }
                             {cartDetails?.numOfCartItems && cartDetails.numOfCartItems > 4 && (
                                 <div className={`w-full text-center mx-auto mt-5 flex flex-col gap-5`}>
-                                    <Link href={`/cart`} className={`text-lg font-bold text-start hover:text-[#717FE0] transition-all duration-400`}>View Full Cart</Link>
+                                    <Link href={`/cart`}
+                                          className={`text-lg font-bold text-start hover:text-[#717FE0] transition-all duration-400`}>View
+                                        Full Cart</Link>
                                 </div>
                             )}
-                            <SheetFooter>
+                            <SheetFooter
+                                className={`w-full max-w-[100vw] max-h-[100vh] py-1 px-0 font-[Poppins] flex`}>
                                 <div className={`py-10 text-[18px] text-[#222] leading-6 w-full`}>
                                     Total: {cartDetails?.data.totalCartPrice} EGP
                                 </div>
-                                <div className="flex justify-center items-center w-full gap-2">
+                                <div className="flex md:justify-center justify-start items-center w-full gap-2">
                                     <SheetClose asChild>
                                         <Link href={`/cart`}>
                                             <Button
-                                                className={`hover:bg-[#717fe0] transition-all duration-300 bg-[#222222] text-[15px] text-white px-9 rounded-[20px] uppercase font-poppins py-[22px] cursor-pointer`}>
+                                                className={`hover:bg-[#717fe0] transition-all duration-300 bg-[#222222] text-[15px] text-white px-3 md:px-9 rounded-[20px] uppercase font-poppins py-2 md:py-[22px] cursor-pointer`}>
                                                 View Cart</Button>
                                         </Link>
                                     </SheetClose>
                                     <SheetClose asChild>
                                         <Link href={`/checkout`}>
                                             <Button
-                                                className={`hover:bg-[#717fe0] transition-all duration-300 bg-[#222222] text-[15px] text-white px-9 rounded-[20px] uppercase font-poppins py-[22px] cursor-pointer`}>
+                                                className={`hover:bg-[#717fe0] transition-all duration-300 bg-[#222222] text-[15px] text-white px-3 md:px-9 rounded-[20px] uppercase font-poppins py-2 md:py-[22px] cursor-pointer`}>
                                                 Checkout</Button>
                                         </Link>
                                     </SheetClose>
@@ -192,6 +215,15 @@ export default function Navbar() {
                             </SheetFooter>
                         </SheetContent>
                     </Sheet>
+                    <button className={`md:hidden`}>
+                        {cartDetails?.numOfCartItems ?
+                            <Badge
+                                className={`absolute -top-4 bg-[#717FE0] text-white`}>{cartDetails?.numOfCartItems}</Badge> :
+                            null}
+                        <Link href="/cart"><ShoppingCart
+                            className={`hover:text-[#717fe0] text-[#222] fill-[#222] cursor-pointer hover:fill-[#717FE0] transition-all duration-400 ${isActive('/cart') ? 'text-[#717FE0] fill-[#717FE0]' : ''}`}/></Link>
+
+                    </button>
                     <button>
                         {wishlist?.count ?
                             <Badge className={`absolute -top-4 bg-[#717FE0] text-white`}>{wishlist.count}</Badge> :
@@ -250,8 +282,47 @@ export default function Navbar() {
                                 </>}
                         </DropdownMenuContent>
                     </DropdownMenu>
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <Button className={`md:hidden`}>
+                                <Menu/>
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent className={`w-[250px] sm:w-[300px] flex font-[Poppins]`} side={`left`}>
+                            <SheetHeader className={`flex flex-row justify-between items-start gap-2`}>
+                                <SheetTitle className={`text-[#333] leading-6 text-[18px] font-bold uppercase`}>Navigation</SheetTitle>
+                                <SheetClose className={`top-0 right-0 md:top-4 md:top-4`} asChild>
+                                    <XIcon
+                                        className={`size-8 md:size-8 text-[#333] cursor-pointer hover:text-[#717fe0] transition-all duration-400`}/>
+                                </SheetClose>
+                            </SheetHeader>
+                            <div className="w-full ml-4 mr-auto mt-5 flex flex-col justify-center gap-4">
+                                <SheetClose asChild>
+                                    <Link href={`/`}
+                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Home</Link>
+                                </SheetClose>
+                                <SheetClose asChild>
+                                    <Link href="/products"
+                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Shop</Link>
+                                </SheetClose>
+                                <SheetClose asChild>
+                                    <Link href="/categories"
+                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Categories</Link>
+                                </SheetClose>
+                                <SheetClose asChild>
+                                    <Link href="/brands"
+                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>Brands</Link>
+                                </SheetClose>
+                                <SheetClose asChild>
+                                    <Link href="/about"
+                                          className={`text-[#555] text-[14px] block hover:text-[#717FE0] mb-[18px] transition-all duration-400`}>About</Link>
+                                </SheetClose>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
                 </NavigationMenuList>
             </NavigationMenu>
+
         </div>
     )
 }

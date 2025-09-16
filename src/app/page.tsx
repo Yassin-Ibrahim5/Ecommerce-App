@@ -12,12 +12,12 @@ export default async function Home() {
     const {data: products} = await getProducts();
 
     return (
-        <>
+        <div className={`max-w-[100vw]`}>
             <MainSlider/>
             <div className={`my-5`}>
                 <CatSliderComp category={categories}/>
             </div>
             <ProductsGridSystem products={products}/>
-        </>
+        </div>
     );
 }
