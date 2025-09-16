@@ -85,7 +85,7 @@ export default function Navbar() {
         <div
             className={`max-w-[100vw] flex justify-between items-center py-2 px-4 md:px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
             {/*Logo and Desktop Menu*/}
-            <NavigationMenu className={`text-md p-3 md:p-5 flex justify-center lg:justify-between max-w-7xl gap-3 lg:gap-0 items-center mx-auto w-full`}>
+            <NavigationMenu className={`text-md p-3 md:p-5 flex justify-between max-w-7xl gap-3 lg:gap-0 items-center mx-auto w-full`}>
                 <NavigationMenuList className={`font-[Poppins] gap-6 md:gap-12`}>
                     <NavigationMenuItem>
                         <Link href={`/`}
