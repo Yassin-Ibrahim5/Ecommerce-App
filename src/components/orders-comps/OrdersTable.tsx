@@ -13,8 +13,8 @@ export default function OrdersTable() {
         <>
             {loading ? <LoadingPage/> :
                 (orders?.length !== 0 ?
-                        (<div className={`w-3/4 mx-auto`}>
-                            <h2 className="text-4xl mb-5 text-start font-bold uppercase font-[Poppins] text-[#222222]">Orders</h2>
+                        (<div className={`w-full lg:w-3/4 mx-auto px-4 lg:px-0`}>
+                            <h2 className="text-2xl md:text-4xl mb-5 md:text-start font-bold uppercase font-[Poppins] text-[#222222]">Orders</h2>
                             <Table className={`w-full border-2 font-[Poppins]`}>
                                 <TableHeader>
                                     <TableRow>
@@ -25,7 +25,7 @@ export default function OrdersTable() {
                                         <TableHead className={`p-6 text-center uppercase font-bold text-[#555]`}>Total
                                             Price</TableHead>
                                         <TableHead
-                                            className={`p-6 text-center uppercase font-bold text-[#555]`}>Action</TableHead>
+                                            className={`p-6 text-center uppercase font-bold text-[#555] hidden md:block`}>Details</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
@@ -43,7 +43,7 @@ export default function OrdersTable() {
                                             <TableCell className={`p-6 text-center text-[#555]`}>
                                                 {order.totalOrderPrice} EGP
                                             </TableCell>
-                                            <TableCell className={`p-6 text-center`}>
+                                            <TableCell className={`p-6 text-center hidden md:block`}>
                                                 <Button
                                                     className={`px-8 py-5 cursor-pointer bg-black rounded-[22px] hover:bg-[#717FE0] border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
                                                     <Link href={`/allorders`}>
@@ -55,6 +55,7 @@ export default function OrdersTable() {
                                     ))}
                                 </TableBody>
                             </Table>
+
                         </div>) :
                         <div className={`w-1/2 mx-auto flex flex-col items-center justify-center gap-5 font-[Poppins]`}>
                             <div
