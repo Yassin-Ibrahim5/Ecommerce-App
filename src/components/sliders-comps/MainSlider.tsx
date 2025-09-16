@@ -31,7 +31,7 @@ export default function MainSlider() {
                                     <h2 className={`text-3xl md:text-[60px] font-semibold text-[#333333] mb-2 md:mb-4 font-[Playfair_Display]`}>NEW
                                         SEASON</h2>
                                     <Button
-                                        className={`bg-[#717fe0] transition-all duration-300 hover:bg-[#222222] text-[15px] text-white px-6 md:px-9 rounded-full font-poppins py-4 md:py-6 cursor-pointer`}>SHOP
+                                        className={`bg-[#717fe0] transition-all duration-300 hover:bg-[#222222] text-[15px] text-white px-6 md:px-9 rounded-full font-[Poppins] py-4 md:py-6 cursor-pointer`}>SHOP
                                         NOW</Button>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@ export default function MainSlider() {
                                     <h2 className={`text-3xl md:text-[60px] font-semibold text-[#333333] mb-2 md:mb-4 font-[Playfair_Display]`}>JACKETS
                                         & COATS</h2>
                                     <Button
-                                        className={`bg-[#717fe0] transition-all duration-300 hover:bg-[#222222] text-[15px] text-white px-6 md:px-9 rounded-full font-poppins py-4 md:py-6 cursor-pointer`}>SHOP
+                                        className={`bg-[#717fe0] transition-all duration-300 hover:bg-[#222222] text-[15px] text-white px-6 md:px-9 rounded-full font-[Poppins] py-4 md:py-6 cursor-pointer`}>SHOP
                                         NOW</Button>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@ export default function MainSlider() {
                                     <h2 className={`text-3xl md:text-[60px] font-semibold text-[#333333] mb-2 md:mb-4 font-[Playfair_Display]`}>NEW
                                         ARRIVALS</h2>
                                     <Button
-                                        className={`bg-[#717fe0] transition-all duration-300 hover:bg-[#222222] text-[15px] text-white px-6 md:px-9 rounded-full font-poppins py-4 md:py-6 cursor-pointer`}>SHOP
+                                        className={`bg-[#717fe0] transition-all duration-300 hover:bg-[#222222] text-[15px] text-white px-6 md:px-9 rounded-full font-[Poppins] py-4 md:py-6 cursor-pointer`}>SHOP
                                         NOW</Button>
                                 </div>
                             </div>
