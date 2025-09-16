@@ -43,9 +43,11 @@ export default function WishlistTable() {
         <>
             {loading ? <LoadingPage/> :
                 (wishlist?.count !== 0 ?
-                        (<div className={`w-3/4 mx-auto`}>
-                            <h2 className="text-4xl mb-5 text-start font-bold uppercase font-[Poppins] text-[#222222]">Wishlist</h2>
-                            <Table className={`w-full border-2`}>
+                        (<div className={`w-full lg:w-3/4 mx-auto px-4 lg:px-0`}>
+                            <h2 className="text-2xl md:text-4xl mb-5 md:text-start font-bold uppercase font-[Poppins] text-[#222222]">Wishlist</h2>
+
+                            {/*Desktop View Table*/}
+                            <Table className={`w-full border-2 hidden md:table`}>
                                 <TableHeader>
                                     <TableRow>
                                         <TableHead
@@ -76,7 +78,8 @@ export default function WishlistTable() {
                                                     </Link>
                                                 </div>
                                             </TableCell>
-                                            <TableCell className="p-6 text-center text-[#555] font-[Poppins]">{product.price} EGP</TableCell>
+                                            <TableCell
+                                                className="p-6 text-center text-[#555] font-[Poppins]">{product.price} EGP</TableCell>
                                             <TableCell className="p-6 text-center text-[#555] font-[Poppins]">
                                                 <Button onClick={() => {
                                                     handleAddToCart(product._id).then();
@@ -89,10 +92,53 @@ export default function WishlistTable() {
                                     ))}
                                 </TableBody>
                             </Table>
+
+                            {/*Mobile View Table*/}
+                            <div className="md:hidden font-[Poppins]">
+                                {wishlist?.data?.map((product) => (
+                                    <div key={product._id}
+                                         className={`bg-white border-2 rounded-lg p-4 p-4 mb-4 shadow-sm`}>
+                                        <div className="flex items-center justify-between mb-4">
+                                            <div className="flex items-center gap-4">
+                                                <Image src={product.imageCover} alt={product.title} width={80}
+                                                       height={80} className={`rounded-md`}/>
+                                                <Link href={`/products/${product._id}`}>
+                                                    <h3 className="text-base font-bold text-[#555] hover:text-[#717FE0] transition-all duration-400">
+                                                        {product.title.split(" ").slice(0, 3).join(" ")}
+                                                    </h3>
+                                                </Link>
+                                            </div>
+                                            <button onClick={() => {
+                                                handleRemoveFromWishlist(product._id).then()
+                                            }}
+                                                    className={`text-[#888] hover:text-red-500 transition-all duration-400 cursor-pointer`}>
+                                                <Trash2 size={24}/>
+                                            </button>
+                                        </div>
+                                        <div className="flex justify-between items-center text-[#555]">
+                                            <div className={`flex items-center justify-start`}>
+                                                <div className="font-semibold text-black">Price: &nbsp;</div>
+                                                <div>{product.price} EGP</div>
+                                            </div>
+                                            <div className="">
+                                                <Button onClick={() => {
+                                                    handleAddToCart(product._id).then();
+                                                }}
+                                                        className={`px-5 py-3 cursor-pointer bg-black rounded-[22px] hover:bg-[#717FE0] hover:text-white border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
+                                                    Add to Cart
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>) :
                         <div className={`w-1/2 mx-auto flex flex-col items-center justify-center gap-5 font-[Poppins]`}>
-                            <div className={`flex items-center justify-center rounded-full bg-slate-100 p-10 group hover:bg-[#717FE0] transition-all duration-400`}>
-                                <HeartOff className={`text-6xl text-black group-hover:text-white transition-all duration-400`} size={62}/>
+                            <div
+                                className={`flex items-center justify-center rounded-full bg-slate-100 p-10 group hover:bg-[#717FE0] transition-all duration-400`}>
+                                <HeartOff
+                                    className={`text-6xl text-black group-hover:text-white transition-all duration-400`}
+                                    size={62}/>
                             </div>
                             <h2 className={`text-3xl font-bold`}>Your wishlist is empty!</h2>
                             <p className={`text-md w-[75%] text-center text-slate-500`}>Found something you like? Tap on
