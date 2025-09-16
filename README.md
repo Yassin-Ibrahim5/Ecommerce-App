@@ -2,7 +2,7 @@
 
 ![Project preview](https://i.imgur.com/K2FzUqS.png)
 
-This is a full-featured ecommerce application built with Next.js, React, and Redux Toolkit. It provides a complete shopping experience, from browsing products to secure authentication and a seamless checkout process.
+This is a full-featured ecommerce application built with Next.js, and React. It provides a complete shopping experience, from browsing products to secure authentication and a seamless checkout process.
 
 ---
 
@@ -12,7 +12,7 @@ This is a full-featured ecommerce application built with Next.js, React, and Red
 * **State Management**: Global state management with Redux Toolkit for a predictable data flow.
 * **Product Catalog**: Browse and filter a wide range of products.
 * **Cart Functionality**: Add products to your cart, and manage quantities.
-* **API Integration**: Uses the RouteMS API for product data, authentication, and more.
+* **API Integration**: Uses the Route Academy - Ecommerce API for product data, authentication, and more.
 
 ---
 
@@ -20,7 +20,6 @@ This is a full-featured ecommerce application built with Next.js, React, and Red
 
 * **Next.js**: The React framework for production.
 * **React**: The core library for building the user interface.
-* **Redux Toolkit**: Efficient state management.
 * **NextAuth.js**: For handling authentication.
 * **Tailwind CSS**: For a modern and responsive design.
 
