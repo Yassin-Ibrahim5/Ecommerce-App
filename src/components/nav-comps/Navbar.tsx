@@ -235,32 +235,32 @@ export default function Navbar() {
                         <DropdownMenuTrigger><User
                             className={`focus:border-0 cursor-pointer hover:text-[#717fe0] transition-all duration-200`}
                             size={27}/></DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                            <DropdownMenuLabel className={`font-bold`}>Account</DropdownMenuLabel>
+                        <DropdownMenuContent className={`font-[Poppins]`}>
+                            <DropdownMenuLabel className={`font-semibold`}>Account</DropdownMenuLabel>
                             <DropdownMenuSeparator/>
                             {session.data ?
                                 <>
                                     <DropdownMenuItem>
                                         <Link href="/allorders"
-                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
+                                              className="font-normal flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <ClipboardList/>Orders
                                         </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem>
                                         <Link href="/change-password"
-                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
+                                              className="font-normal flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <UserPen/>Change Password
                                         </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem>
                                         <Link href="/change-data"
-                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
+                                              className="font-normal flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200">
                                             <UserCog/>Change User Data
                                         </Link>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem>
                                         <Link href="/"
-                                              className="font-semibold flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200"
+                                              className="font-normal flex justify-between items-center gap-1 hover:text-[#717fe0] transition-all duration-200"
                                               onClick={() => signOut({callbackUrl: "/login"})}>
                                             <LogOut/>Log Out
                                         </Link>
