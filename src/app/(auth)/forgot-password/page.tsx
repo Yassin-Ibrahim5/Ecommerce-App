@@ -46,7 +46,7 @@ export default function ForgotPassword() {
                     the
                     email address, please make sure it is correct.</p>
                 {errorMessage && <p className="text-red-500 text-sm md:text-lg">{errorMessage}</p>}
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} className={`mt-5`}>
                     <Input {...register("email", {required: "Email is Required"})}
                            className="p-3 md:p-5 my-3 md:my-5 focus-visible:ring-[#717FE080]" type="email"
                            placeholder="Email"/>

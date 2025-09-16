@@ -40,21 +40,21 @@ export default function VerifyCode() {
     }
 
     return (
-        <div className="my-30 font-[Poppins]">
-            <div className="w-1/2 mx-auto">
-                <h2 className="text-3xl mb-3 text-start font-bold uppercase font-[Poppins] text-[#222222]">Security Code
+        <div className="my-30 font-[Poppins] px-4 sm:px-6 lg:px-8">
+            <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
+                <h2 className="text-2xl md:text-3xl mb-5 md:text-start font-bold uppercase font-[Poppins] text-[#222222]">Security Code
                     to Reset Password</h2>
-                <p className="text-gray-500">Insert the security code sent to your email in order to proceed with the
+                <p className="text-sm md:text-lg text-[#555] text-start">Insert the security code sent to your email in order to proceed with the
                     password reset.</p>
-                {errorMessage && <p className="text-red-700 text-center text-lg">{errorMessage}</p>}
-                <form onSubmit={handleSubmit(onSubmit)}>
+                {errorMessage && <p className="text-red-500 text-sm text-center md:text-lg">{errorMessage}</p>}
+                <form onSubmit={handleSubmit(onSubmit)} className={`mt-5`}>
                     <Input {...register("resetCode", {required: "Security Code is Required",})}
-                           className="p-5 my-5 focus-visible:ring-[#717FE080]"
+                           className="p-3 md:p-5 my-3 md:my-5 focus-visible:ring-[#717FE080]"
                            type="text" placeholder="Security Code"/>
-                    {errors.resetCode && <p className="text-red-700">{errors.resetCode.message}</p>}
+                    {errors.resetCode && <p className="text-red-500 text-sm">{errors.resetCode.message}</p>}
                     <div className="flex items-center gap-5">
                         <Button type="submit" disabled={loading}
-                                className={`px-10 py-5 cursor-pointer my-5 bg-black rounded-[22px] hover:bg-[#717FE0] hover:text-white border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
+                                className={`w-full sm:w-auto px-6 py-3 md:px-10 md:my-5 cursor-pointer bg-black rounded-[22px] hover:bg-[#717FE0] hover:text-white border-1 transition-all duration-400 border-[#e6e6e6] text-white uppercase font-[Poppins]`}>
                             {loading ? <Loader className={`animate-spin`} size={20}/> : "Verify"}
                         </Button>
                     </div>
