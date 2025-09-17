@@ -70,14 +70,14 @@ export default function ProductDetailsComp({productDetails}: { productDetails: P
             <div className="w-full lg:w-1/2 ml-10 px-10 transition-all duration-400">
                 <h4 className="text-2xl text-[#333] leading-9 font-medium">{productDetails?.title}</h4>
                 <p className={`text-lg mt-3 leading-6 font-semibold`}>{productDetails?.price} EGP</p>
-                <p className={`text-[#666] mt-6 text-[14px]`}>{productDetails?.description}</p>
+                <p className={`text-[#666] mt-6 text-sm`}>{productDetails?.description}</p>
 
                 <div className="flex justify-between items-center">
                     <div className="catPrice">
-                        <p className={`text-[14px] text-[#666] my-4`}>{productDetails?.category?.name}</p>
+                        <p className={`text-sm text-[#666] my-4`}>{productDetails?.category?.name}</p>
                     </div>
-                    <div className={`flex gap-2 text-[14px] items-center`}>
-                        <Star className="text-[#ffff01]" size={22}/>
+                    <div className={`flex gap-2 text-sm items-center`}>
+                        <Star className="text-[#ffff01] fill-[#ffff01]" size={20}/>
                         <span className={`text-[#666]`}>{productDetails.ratingsAverage}</span>
                     </div>
                 </div>
