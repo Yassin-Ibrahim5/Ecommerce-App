@@ -1,6 +1,5 @@
 "use client";
 import React, {createContext, useContext, useEffect, useState} from "react";
-import {useCart} from "@/app/context/CartContext";
 import {getUserOrders} from "@/actions/orders.action";
 import {Order} from "@/app/types/orders.model";
 
@@ -19,23 +18,24 @@ const OrdersContext = createContext<OrdersContextType>({
 
 export default function OrdersContextProvider({children}: { children: React.ReactNode }) {
     const [orders, setOrders] = useState<Order[] | null>(null);
-    const {cartDetails} = useCart();
-    const userId = cartDetails?.data?.cartOwner;
     const [loading, setLoading] = useState(true);
+
     async function fetchOrders() {
+        const userId = localStorage.getItem("userID") as string;
         if (userId) {
             const response = await getUserOrders(userId);
             setOrders(response?.data);
             setLoading(false);
             return response?.data;
         } else {
-            setLoading(true);
+            setOrders([]);
+            setLoading(false);
         }
     }
 
     useEffect(() => {
-        fetchOrders();
-    }, [userId]);
+        fetchOrders().then();
+    }, []);
 
     return <OrdersContext.Provider value={{orders, fetchOrders, loading}}>
         {children}

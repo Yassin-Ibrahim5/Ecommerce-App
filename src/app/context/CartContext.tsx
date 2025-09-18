@@ -15,7 +15,7 @@ const CartContext = createContext<CartContextType>({
     cartDetails: null,
     fetchCart: async () => {
     },
-    setCartDetails: (cartDetails: CartData | null) => {
+    setCartDetails: () => {
     },
     loading: true
 });
@@ -25,20 +25,33 @@ export default function CartContextProvider({children}: { children: React.ReactN
     const [cartDetails, setCartDetails] = useState<CartData | null>(null);
     const [loading, setLoading] = useState(true);
     async function fetchCart() {
-        const token = await getUserToken();
-        if (!token) {
+        try {
+            const token = await getUserToken();
+            if (!token) {
+                setLoading(false);
+                return;
+            }
+
+            const existingID = localStorage.getItem("userID");
+            const response = await getUserCart();
+            console.log("Full response", response);
+            if (response.data && response.data.data) {
+                setCartDetails(response.data);
+                const userID = response?.data.data.cartOwner;
+                if (userID && !existingID) {
+                    localStorage.setItem("userID", userID);
+                }
+            }
+        } catch (error) {
+            console.error("Error fetching cart:", error);
+            setCartDetails(null);
+        } finally {
             setLoading(false);
-            return;
         }
-        const response = await getUserCart();
-        setCartDetails(response?.data);
-        localStorage.setItem("userId", response?.data?.cartOwner);
-        setLoading(false);
-        return response?.data;
     }
 
     useEffect(() => {
-        fetchCart();
+        fetchCart().then();
     }, []);
 
     return <CartContext.Provider value={{cartDetails, fetchCart, setCartDetails, loading}}>
