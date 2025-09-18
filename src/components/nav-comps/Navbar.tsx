@@ -85,7 +85,8 @@ export default function Navbar() {
         <div
             className={`max-w-[100vw] flex justify-between items-center py-2 px-4 md:px-10 fixed w-full top-0 z-50 ${scrolled ? "bg-white shadow-sm" : "bg-transparent"} transition-all duration-300`}>
             {/*Logo and Desktop Menu*/}
-            <NavigationMenu className={`text-md p-3 md:p-5 flex justify-between max-w-7xl gap-3 lg:gap-0 items-center mx-auto w-full`}>
+            <NavigationMenu
+                className={`text-md p-3 md:p-5 flex justify-between max-w-7xl gap-3 lg:gap-0 items-center mx-auto w-full`}>
                 <NavigationMenuList className={`font-[Poppins] gap-6 md:gap-12`}>
                     <NavigationMenuItem>
                         <Link href={`/`}
@@ -186,9 +187,13 @@ export default function Navbar() {
                             }
                             {cartDetails?.numOfCartItems && cartDetails.numOfCartItems > 4 && (
                                 <div className={`w-full text-center mx-auto mt-5 flex flex-col gap-5`}>
+
                                     <Link href={`/cart`}
-                                          className={`text-lg font-bold text-start hover:text-[#717FE0] transition-all duration-400`}>View
-                                        Full Cart</Link>
+                                          className={`text-lg font-bold text-start hover:text-[#717FE0] transition-all duration-400`}>
+                                        <SheetClose className={`cursor-pointer`}>
+                                            View Full Cart
+                                        </SheetClose>
+                                    </Link>
                                 </div>
                             )}
                             <SheetFooter
