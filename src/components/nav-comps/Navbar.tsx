@@ -175,7 +175,7 @@ export default function Navbar() {
                                 </ul>) : (
                                     <div
                                         className={`w-full text-center mx-auto mt-5 flex flex-col items-center justify-center gap-5`}>
-                                        <h2 className={`text-2xl font-bold`}>Your cart is empty</h2>
+                                        <h2 className={`text-2xl font-bold`}>Your cart is empty!</h2>
                                         <p className={`text-[#888] text-md leading-6`}>
                                             Add items to your cart to view and checkout</p>
                                         <Link href={`/`}
@@ -185,7 +185,7 @@ export default function Navbar() {
                                     </div>
                                 )
                             }
-                            {cartDetails?.numOfCartItems && cartDetails.numOfCartItems > 4 && (
+                            {(cartDetails && cartDetails.numOfCartItems > 4) ? (
                                 <div className={`w-full text-center mx-auto mt-5 flex flex-col gap-5`}>
 
                                     <Link href={`/cart`}
@@ -195,7 +195,7 @@ export default function Navbar() {
                                         </SheetClose>
                                     </Link>
                                 </div>
-                            )}
+                            ) : null}
                             <SheetFooter
                                 className={`w-full max-w-[100vw] max-h-[100vh] py-1 px-0 font-[Poppins] flex`}>
                                 <div className={`py-10 text-[18px] text-[#222] leading-6 w-full`}>
