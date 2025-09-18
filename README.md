@@ -12,6 +12,7 @@ This is a full-featured ecommerce application built with Next.js, and React. It 
 * **State Management**: Global state management with Redux Toolkit for a predictable data flow.
 * **Product Catalog**: Browse and filter a wide range of products.
 * **Cart Functionality**: Add products to your cart, and manage quantities.
+* **Wishlist Functionality**: Add products to your wishlist, and throught the wishlist add them to your cart.
 * **API Integration**: Uses the Route Academy - Ecommerce API for product data, authentication, and more.
 
 ---
@@ -22,6 +23,7 @@ This is a full-featured ecommerce application built with Next.js, and React. It 
 * **React**: The core library for building the user interface.
 * **NextAuth.js**: For handling authentication.
 * **Tailwind CSS**: For a modern and responsive design.
+* **shadcn**: For ready-made UI components.
 
 ---
 

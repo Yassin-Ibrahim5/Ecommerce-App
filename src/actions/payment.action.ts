@@ -40,7 +40,7 @@ async function makeCashOrder(cartId: string, shippingAddress: { shippingAddress:
 async function makeOnlinePayment(cartId: string, shippingAddress: ShippingAddressTypes) {
     try {
         const token = await getUserToken();
-        const response = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`, {
+        const response = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=https://snap-cart-yassin-ibrahim.vercel.app/`, {
             shippingAddress: {
                 details: shippingAddress.details,
                 phone: shippingAddress.phone,
