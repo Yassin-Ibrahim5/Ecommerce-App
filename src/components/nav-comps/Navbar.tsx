@@ -178,9 +178,10 @@ export default function Navbar() {
                                         <h2 className={`text-2xl font-bold`}>Your cart is empty!</h2>
                                         <p className={`text-[#888] text-md leading-6`}>
                                             Add items to your cart to view and checkout</p>
-                                        <Link href={`/`}
-                                              className={`text-[#717fe0] hover:underline text-md`}>
-                                            Continue Shopping
+                                        <Link href={`/`}>
+                                            <SheetClose className={`cursor-pointer text-[#717fe0] hover:underline text-md`}>
+                                                Continue Shopping
+                                            </SheetClose>
                                         </Link>
                                     </div>
                                 )
